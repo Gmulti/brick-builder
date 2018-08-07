@@ -5,12 +5,13 @@ Ce module contient toute la logique métier de Drag'n'Drop pour un builder const
 L'index permet d'exposer la totalité de la lib.
 
 Les dépendances :
-- `redux`
-- `lodash`
 
-Sommaire : 
+-   `redux`
+-   `lodash`
 
-- [components](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/dnd/components)
-- [constants](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/dnd/constants)
-- [helpers](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/dnd/helpers)
-- [reducers](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/dnd/reducers)
+Sommaire :
+
+-   [components](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/dnd/components)
+-   [constants](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/dnd/constants)
+-   [helpers](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/dnd/helpers)
+-   [reducers](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/dnd/reducers)

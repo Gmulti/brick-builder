@@ -5,14 +5,15 @@ Ce module contient toute la logique métier de settings pour un builder construi
 L'index permet d'exposer la totalité de la lib.
 
 Les dépendances :
-- `redux`
-- `lodash`
 
-Sommaire : 
+-   `redux`
+-   `lodash`
 
-- [components](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/settings/components)
-- [constants](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/settings/constants)
-- [containers](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/settings/containers)
-- [hoc](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/settings/hoc)
-- [helpers](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/settings/helpers)
-- [reducers](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/lib/settings/reducers)
+Sommaire :
+
+-   [components](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/settings/components)
+-   [constants](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/settings/constants)
+-   [containers](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/settings/containers)
+-   [hoc](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/settings/hoc)
+-   [helpers](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/settings/helpers)
+-   [reducers](https://github.com/Gmulti/brick-builder/tree/master/src/application/builder/lib/settings/reducers)
