@@ -1,0 +1,20 @@
+.layoutColumn:hover{
+    &::before{
+        opacity: 1;
+    }
+}
+
+.layoutColumn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 10001;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    border: 1px dashed #eaeef0;
+    transition: .2s opacity linear;
+    pointer-events: none;
+}

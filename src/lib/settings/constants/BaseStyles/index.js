@@ -1,0 +1,15 @@
+export const COLOR = 'COLOR'
+export const TYPE_OBJECT = 'TYPE_OBJECT'
+export const TYPE_OBJECT_RANGE = 'TYPE_OBJECT_RANGE'
+export const SELECT_VALUE = 'SELECT_VALUE'
+export const VALUE = 'VALUE'
+export const SELECT_VALUE_SEARCH = 'SELECT_VALUE_SEARCH'
+
+export default {
+    COLOR,
+    TYPE_OBJECT,
+    TYPE_OBJECT_RANGE,
+    SELECT_VALUE,
+    VALUE,
+    SELECT_VALUE_SEARCH
+}

@@ -1,0 +1,54 @@
+.choiceColumnLayout {
+    width: 20%;
+    cursor: pointer;
+    position: relative;
+}
+
+.choiceColumn {
+    height: 60px;
+    background: #eaeef0;
+    border-radius: 4px;
+    transition: background .2s ease-out;
+    &:hover{
+        background: #778f9b;
+    }
+}
+
+.choiceColumnTwo::before,
+.choiceColumnThree::before,
+.choiceColumnThree::after,
+.choiceColumnFour::before,
+.choiceColumnFour::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: 60px;
+    width: 2px;
+    background: #fff;
+}
+
+.choiceColumnTwo::before{
+    left: calc(50% - 1px);
+}
+
+.choiceColumnThree::before {
+    left: 33.33333%;
+}
+
+.choiceColumnThree::after{
+    left: 66.66667%;
+}
+
+.choiceColumnFour::before {
+    left: calc(25% - 1px);
+    width: 50%;
+    background: 0 0;
+    border-right: 2px solid #fff;
+    border-left: 2px solid #fff;
+}
+
+.choiceColumnFour::after{
+    left: calc(50% - 1px);
+}

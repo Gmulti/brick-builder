@@ -1,0 +1,5 @@
+- [BorderDetail](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/models/MjModels/Base/Schema/BorderDetail)
+- [ContainerBackgroundColor](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/models/MjModels/Base/Schema/ContainerBackgroundColor)
+- [Height](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/models/MjModels/Base/Schema/Height)
+- [Width](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/models/MjModels/Base/Schema/Width)
+- [PaddingDetail](https://github.com/Gmulti/delipress-builders/tree/master/src/application/builder/models/MjModels/Base/Schema/PaddingDetail)

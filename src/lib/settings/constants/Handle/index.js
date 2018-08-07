@@ -1,0 +1,13 @@
+export const HANDLE_TYPE_OBJECT = 'HANDLE_TYPE_OBJECT'
+export const HANDLE_IMAGE = 'HANDLE_IMAGE'
+export const HANDLE_VALUE = 'HANDLE_VALUE'
+export const HANDLE_COLOR = 'HANDLE_COLOR'
+export const HANDLE_API = 'HANDLE_API'
+
+export default {
+    HANDLE_TYPE_OBJECT,
+    HANDLE_IMAGE,
+    HANDLE_VALUE,
+    HANDLE_COLOR,
+    HANDLE_API
+}

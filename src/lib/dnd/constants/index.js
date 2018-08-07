@@ -1,0 +1,21 @@
+export const FROM_EMPTY_COLUMN  = "FROM_EMPTY_COLUMN"
+export const FROM_EMPTY_SECTION = "FROM_EMPTY_SECTION"
+
+export const ADD_COLUMN         = "ADD_COLUMN"
+export const ADD_COMPONENT      = "ADD_COMPONENT"
+export const ADD_SECTION        = "ADD_SECTION"
+
+export const MOVE_SECTION    = "MOVE_SECTION"
+export const MOVE_COLUMN     = "MOVE_COLUMN"
+export const MOVE_COMPONENT  = "MOVE_COMPONENT"
+
+export default {
+    FROM_EMPTY_COLUMN,
+    FROM_EMPTY_SECTION,
+    ADD_COLUMN,
+    ADD_COMPONENT,
+    ADD_SECTION,
+    MOVE_SECTION,
+    MOVE_COLUMN,
+    MOVE_COMPONENT
+}
