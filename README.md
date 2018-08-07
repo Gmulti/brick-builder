@@ -1,4 +1,4 @@
-# Brick
+# Brick V2
 
 > Brick is an email builder that works on a principle of section, column, component.
 > It uses the MJML library to generate HTML
