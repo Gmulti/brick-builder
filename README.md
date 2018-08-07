@@ -5,6 +5,10 @@
 
 **[In Development]**
 
+This is the new version of the [DeliPress](https://delipress.io/) email builder.
+
+[Video presentation of the constructor V1](https://www.youtube.com/watch?v=8iCcGJ2gpCk&t=22s)
+
 ## Available Scripts
 
 In the project directory, you can run:
