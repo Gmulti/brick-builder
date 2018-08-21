@@ -1,22 +1,13 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
 import * as _ from 'lodash'
 
-import Title from '../../Title'
 import InputColor from '../../../../../../ui/Settings/InputColor'
 import Field from '../../../../../../ui/Settings/Field'
 
 class Color extends Component {
     render() {
-        const {
-            component,
-            title = '',
-            handleChangeComplete,
-            handleChange,
-            styleKey,
-            styleKeyJS
-        } = this.props
+        const { component, title = '', styleKey } = this.props
 
         return (
             <Field label={title}>

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import propTypes from 'prop-types'
-import throttle from 'lodash.throttle'
 
 import { SketchPicker } from 'react-color'
 
@@ -60,7 +59,10 @@ class InputColor extends React.Component {
     state = {
         displayColorPicker: false,
         positionX: 'left',
-        positionY: 'top'
+        positionY: 'top',
+        color: {
+            hex: '#E2E2E2'
+        }
     }
 
     inputColorRef = React.createRef()
@@ -71,19 +73,7 @@ class InputColor extends React.Component {
         const positionX = inputPlacement.left > 240 ? 'right' : 'left'
         const positionY = inputPlacement.top > 300 ? 'bottom' : 'top'
 
-        this.setState({ positionX, positionY })
-    }
-
-    componentWillMount() {
-        this.constructSelector()
-    }
-
-    componentWillUpdate() {
-        this.constructSelector()
-    }
-
-    constructSelector() {
-        this.selector = document.querySelector(`#${this.getIndex()}`)
+        this.setState({ positionX, positionY, color: this.props.color })
     }
 
     handleOpen = () => {
@@ -95,19 +85,12 @@ class InputColor extends React.Component {
     }
 
     handleChange = color => {
-        if (this.selector.style) {
-            this.selector.style.background = color.hex
-        }
-
-        if (this.props.handleChange) {
-            this.props.handleChange(color)
-        }
+        this.setState({ color: color })
+        this.props.handleChange(color)
     }
 
     handleChangeComplete = color => {
-        if (this.props.handleChangeComplete) {
-            this.props.handleChangeComplete(color)
-        }
+        this.props.handleChangeComplete(color)
     }
 
     getIndex() {
@@ -122,7 +105,7 @@ class InputColor extends React.Component {
     render() {
         const { displayColorPicker, positionX, positionY } = this.state
 
-        const { color } = this.props
+        const { color } = this.state
 
         const colorInput = color.hex
 
@@ -154,7 +137,6 @@ class InputColor extends React.Component {
         )
     }
 }
-export default InputColor
 
 InputColor.defaultProps = {
     color: {
@@ -163,7 +145,8 @@ InputColor.defaultProps = {
 }
 
 InputColor.propTypes = {
-    defaultColor: propTypes.object,
     handleChangeComplete: propTypes.func.isRequired,
     handleChange: propTypes.func.isRequired
 }
+
+export default InputColor

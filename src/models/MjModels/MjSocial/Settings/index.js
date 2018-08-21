@@ -4,17 +4,17 @@ import {
     PADDING,
     BACKGROUND_COLOR,
     BORDER_RADIUS
-} from "../../../../lib/settings/components/Settings"
-import { HANDLE_COLOR } from "../../../../lib/settings/constants/Handle";
-import { COLOR } from "../../../../lib/settings/constants/BaseStyles";
-import * as _ from "lodash"
+} from '../../../../lib/settings/components/Settings'
+import { HANDLE_COLOR } from '../../../../lib/settings/constants/Handle'
+import { COLOR } from '../../../../lib/settings/constants/BaseStyles'
+import * as _ from 'lodash'
 
 export default [
     {
         active: true,
         type: GROUP_NAME,
         attributes: {
-            title: "Social"
+            title: 'Social'
         },
         order: 1,
         group: 1
@@ -23,7 +23,7 @@ export default [
         active: true,
         type: BORDER_RADIUS,
         attributes: {
-            styleKey: "border-radius",
+            styleKey: 'border-radius',
             unitValueReadOnly: true
         },
         order: 2,
@@ -37,27 +37,28 @@ export default [
         },
         attributes: {
             unitValueReadOnly: true,
-            handleChangeSelector:  (index) => {
+            handleChangeSelector: index => {
                 const nodes = document.querySelectorAll(`#${index} img`)
                 let _nodesSelect = []
 
-                if(_.isEmpty(nodes)){
+                if (_.isEmpty(nodes)) {
                     return _nodesSelect
                 }
 
-                nodes.forEach((node) => {
+                nodes.forEach(node => {
                     _nodesSelect.push(
-                        node.parentNode.parentNode.parentNode.parentNode.parentNode
+                        node.parentNode.parentNode.parentNode.parentNode
+                            .parentNode
                     )
                 })
 
                 return _nodesSelect
             },
-            styleKeyJS: "backgroundColor",
+            styleKeyJS: 'backgroundColor',
             styleKey: [
-                "facebook-icon-color",
-                "twitter-icon-color",
-                "google-icon-color"
+                'facebook-icon-color',
+                'twitter-icon-color',
+                'google-icon-color'
             ]
         },
         order: 3,
@@ -67,7 +68,7 @@ export default [
         active: true,
         type: GROUP_NAME,
         attributes: {
-            title: "Padding"
+            title: 'Padding'
         },
         order: 1,
         group: 2
@@ -75,8 +76,7 @@ export default [
     {
         active: true,
         type: PADDING,
-        attributes: {
-        },
+        attributes: {},
         order: 2,
         group: 2
     },
@@ -84,7 +84,7 @@ export default [
         active: true,
         type: GROUP_NAME,
         attributes: {
-            title: "Background"
+            title: 'Background'
         },
         order: 1,
         group: 3
@@ -93,7 +93,8 @@ export default [
         active: true,
         type: BACKGROUND_COLOR,
         attributes: {
-            styleKey: "container-background-color"
+            styleKey: 'container-background-color',
+            styleKeyJS: 'backgroundColor'
         },
         order: 2,
         group: 3
