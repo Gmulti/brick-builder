@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { DND } from '../../../../lib'
-import * as MJ_CONSTANT from '../../../../models/MjModels/constant'
 import { TYPE_COLUMN } from '../../../../lib/components/models/constant'
 import TemplatingAction from '../../../../reducers/Templating/actions'
 import styled from 'styled-components'
@@ -25,44 +24,47 @@ const SCChoiceColumn = styled.div`
     }
 `
 
-// .choiceColumnTwo::before,
-// .choiceColumnThree::before,
-// .choiceColumnThree::after,
-// .choiceColumnFour::before,
-// .choiceColumnFour::after {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     top: 0;
-//     z-index: 1;
-//     height: 60px;
-//     width: 2px;
-//     background: #fff;
-// }
+const ChoiceColumnAfterBefore = SCChoiceColumn.extend`
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        height: 60px;
+        width: 2px;
+        background: #fff;
+    }
+`
 
-// .choiceColumnTwo::before {
-//     left: calc(50% - 1px);
-// }
+const SCChoiceColumnTwo = ChoiceColumnAfterBefore.extend`
+    &::before {
+        left: calc(50% - 1px);
+    }
+`
 
-// .choiceColumnThree::before {
-//     left: 33.33333%;
-// }
+const SCChoiceColumnThree = ChoiceColumnAfterBefore.extend`
+    &::before {
+        left: 33.33333%;
+    }
+    &::after {
+        left: 66.66667%;
+    }
+`
 
-// .choiceColumnThree::after {
-//     left: 66.66667%;
-// }
-
-// .choiceColumnFour::before {
-//     left: calc(25% - 1px);
-//     width: 50%;
-//     background: 0 0;
-//     border-right: 2px solid #fff;
-//     border-left: 2px solid #fff;
-// }
-
-// .choiceColumnFour::after {
-//     left: calc(50% - 1px);
-// }
+const SCChoiceColumnFour = ChoiceColumnAfterBefore.extend`
+    &::before {
+        left: calc(25% - 1px);
+        width: 50%;
+        background: 0 0;
+        border-right: 2px solid #fff;
+        border-left: 2px solid #fff;
+    }
+    &::after {
+        left: calc(50% - 1px);
+    }
+`
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -75,7 +77,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 export class ChoiceColumn extends Component {
     addColumns = () => {
         const { actions, section, nbColumn } = this.props
@@ -105,22 +110,22 @@ export class ChoiceColumn extends Component {
     render() {
         const { nbColumn } = this.props
 
-        let _otherStyle = null
+        let SCChoiceColumnDiv = SCChoiceColumn
         switch (nbColumn) {
             case 2:
-                _otherStyle = styles.choiceColumnTwo
+                SCChoiceColumnDiv = SCChoiceColumnTwo
                 break
             case 3:
-                _otherStyle = styles.choiceColumnThree
+                SCChoiceColumnDiv = SCChoiceColumnThree
                 break
             case 4:
-                _otherStyle = styles.choiceColumnFour
+                SCChoiceColumnDiv = SCChoiceColumnFour
                 break
         }
 
         return (
             <SCChoiceColumnLayout onClick={this.addColumns}>
-                <div className={classNames(styles.choiceColumn, _otherStyle)} />
+                <SCChoiceColumnDiv />
             </SCChoiceColumnLayout>
         )
     }
