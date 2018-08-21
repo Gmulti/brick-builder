@@ -2,6 +2,8 @@
     "files.associations": {
         "*.js": "javascriptreact"
     },
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "npm.enableScriptExplorer": true,
     "jshint.enable": false,
     "prettier.semi": false,
     "editor.formatOnSave": true,
