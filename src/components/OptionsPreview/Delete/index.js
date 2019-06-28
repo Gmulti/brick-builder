@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Templating } from '../../../lib'
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faTrash from '@fortawesome/fontawesome-free-solid/faTrash'
 
 import BaseOption from '../BaseOption'

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { assignIn, chain, isEmpty, isUndefined } from 'lodash'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 
@@ -32,11 +32,11 @@ const SCLayoutColumn = styled.div`
 `
 
 const mapStateToProps = (state, ownProps) => {
-    const column = _.assignIn(new MjColumn(), ownProps.column)
+    const column = assignIn(new MjColumn(), ownProps.column)
 
     return {
         column: column,
-        components: _.chain(state.Templating.components)
+        components: chain(state.Templating.components)
             .filter({
                 keySection: ownProps.keySection,
                 keyColumn: column.getKey()
@@ -53,7 +53,7 @@ export class Column extends Component {
 
         return (
             <SCLayoutColumn style={column.getStylePreview()}>
-                {_.isEmpty(components) || _.isUndefined(components) ? (
+                {isEmpty(components) || isUndefined(components) ? (
                     <EmptyColumn column={column}>
                         <Empty column={column} />
                     </EmptyColumn>

@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
-import ParagraphSvg from '../svg/paragraph'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const SCInserterGridItem = styled.button`
     background: #fff;
@@ -12,16 +11,18 @@ const SCInserterGridItem = styled.button`
     border: none;
     cursor: pointer;
     user-select: none;
-    padding: 8px 0;
-    width: 100%;
+    border-radius: 5px;
+    padding: 12px;
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    font-size: 1.4em;
+    margin-bottom: 20px;
     svg {
         margin-bottom: 8px;
     }
-
-    &:hover {
-        box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff,
-            0 1px 1px rgba(25, 30, 35, 0.2);
-    }
+    box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff,
+        0 1px 1px rgba(25, 30, 35, 0.2);
 
     &:active,
     &:focus {
@@ -36,7 +37,10 @@ class EditorInserterGridItem extends React.Component {
 
         return (
             <SCInserterGridItem>
-                <ParagraphSvg />
+                {typeof block.icon === 'string' && (
+                    <FontAwesomeIcon icon={block.icon || 'coffee'} />
+                )}
+                {typeof block.icon !== 'string' && <block.icon />}
                 <span>{block.name}</span>
             </SCInserterGridItem>
         )

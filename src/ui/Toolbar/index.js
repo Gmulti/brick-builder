@@ -39,7 +39,7 @@ class Toolbar extends React.Component {
                     {/* <ButtonIcon>
                         <Plus fill="rgb(80, 95, 121)" width="12" height="12" />
                     </ButtonIcon> */}
-                    <EditorToggle />
+                    {/* <EditorToggle /> */}
                 </SCToolbarTools>
                 <SCToolbarAction>
                     {!!onClickPreview && (

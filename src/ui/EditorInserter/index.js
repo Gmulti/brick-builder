@@ -12,6 +12,7 @@ const SCInserterGrid = styled.div`
     height: 100%;
     padding: 10px;
     flex: 1;
+    text-align: center;
 `
 
 const SCInserterGridItem = styled.button`

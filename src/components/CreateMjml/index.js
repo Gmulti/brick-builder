@@ -1,16 +1,19 @@
 import MjCreateComponent from './MjCreateComponent'
-import * as _ from 'lodash'
+import { find } from 'lodash'
 
 import * as MJ_CONSTANT from '../../models/MjModels/constant'
 import MjmlPreview from '../../models/MjModels/index'
+import TextSVG from '../../ui/svg/paragraph'
+import ButtonSvg from '../../ui/svg/button'
+import DividerSVG from '../../ui/svg/divider'
+import SpacerSVG from '../../ui/svg/spacer'
 
-const MjText = _.find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_TEXT }).model
-const MjImage = _.find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_IMAGE }).model
-const MjSpacer = _.find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_SPACER }).model
-const MjDivider = _.find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_DIVIDER })
-    .model
-const MjSocial = _.find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_SOCIAL }).model
-const MjButton = _.find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_BUTTON }).model
+const MjText = find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_TEXT }).model
+const MjImage = find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_IMAGE }).model
+const MjSpacer = find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_SPACER }).model
+const MjDivider = find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_DIVIDER }).model
+const MjSocial = find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_SOCIAL }).model
+const MjButton = find(MjmlPreview, { type: MJ_CONSTANT.TYPE_MJ_BUTTON }).model
 
 export default [
     {
@@ -19,7 +22,8 @@ export default [
         component: MjCreateComponent,
         props: {
             name: 'Text',
-            tags: ['paragraph', 'content']
+            tags: ['paragraph', 'content'],
+            icon: TextSVG
         },
         params: {
             type: MJ_CONSTANT.TYPE_MJ_TEXT,
@@ -32,7 +36,8 @@ export default [
         component: MjCreateComponent,
         props: {
             name: 'Button',
-            tags: ['link', 'btn']
+            tags: ['link', 'btn'],
+            icon: ButtonSvg
         },
         params: {
             type: MJ_CONSTANT.TYPE_MJ_BUTTON,
@@ -44,7 +49,8 @@ export default [
         component: MjCreateComponent,
         props: {
             name: 'Divider',
-            tags: ['separation', 'hr', 'line']
+            tags: ['separation', 'hr', 'line'],
+            icon: DividerSVG
         },
         params: {
             type: MJ_CONSTANT.TYPE_MJ_DIVIDER,
@@ -56,7 +62,8 @@ export default [
         component: MjCreateComponent,
         props: {
             name: 'Spacer',
-            tags: ['space', 'sep']
+            tags: ['space', 'sep'],
+            icon: SpacerSVG
         },
         params: {
             type: MJ_CONSTANT.TYPE_MJ_SPACER,
@@ -68,7 +75,8 @@ export default [
         component: MjCreateComponent,
         props: {
             name: 'Image',
-            tags: ['picture', 'img']
+            tags: ['picture', 'img'],
+            icon: 'image'
         },
         params: {
             type: MJ_CONSTANT.TYPE_MJ_IMAGE,
@@ -80,7 +88,8 @@ export default [
         component: MjCreateComponent,
         props: {
             name: 'Social',
-            tags: ['fb', 'facebook', 'twitter', 'network']
+            tags: ['fb', 'facebook', 'twitter', 'network'],
+            icon: 'thumbs-up'
         },
         params: {
             type: MJ_CONSTANT.TYPE_MJ_SOCIAL,

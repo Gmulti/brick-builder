@@ -1,18 +1,8 @@
 import {
-    BACKGROUND_COLOR,
-    WIDTH,
-    BORDER_COLOR,
     GROUP_NAME,
-    BORDER,
-    PADDING,
-    BORDER_STYLE,
-    BORDER_WIDTH,
     IMPORT_BUTTON
 } from '../../../../lib/settings/components/Settings'
-import {
-    HANDLE_VALUE,
-    HANDLE_API
-} from '../../../../lib/settings/constants/Handle'
+import { HANDLE_API } from '../../../../lib/settings/constants/Handle'
 import { SELECT_VALUE_SEARCH } from '../../../../lib/settings/constants/BaseStyles'
 
 export default [

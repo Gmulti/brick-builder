@@ -43,7 +43,10 @@ const fontLoader = font => {
 
 const fontSystem = ['Arial', 'Tahoma', 'Trebuchet MS', 'Georgia', 'Verdana']
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 @previewComponent()
 export class MjText extends Component {
     constructor(props) {
@@ -92,6 +95,9 @@ export class MjText extends Component {
                         font-family:${
                             component.componentAttributes['font-family']
                         };
+                    }
+                    #${getIndex()} p {
+                        margin: 0;
                     }
                     `}
                 </style>

@@ -19,7 +19,7 @@ const SCDropColumnHoverElement = styled.div`
     opacity: 0;
     position: absolute;
     height: 0px;
-    width: 100 %;
+    width: 100%;
     background: green;
     z-index: 1000;
     transition: all 0.2s ease -in;
@@ -103,7 +103,10 @@ function collectDrop(connect, monitor) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 @DropTarget([MOVE_COMPONENT, ADD_COMPONENT], cardDrop, collectDrop)
 @dropHover()
 export class DropComponent extends Component {

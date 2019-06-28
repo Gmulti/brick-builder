@@ -1,9 +1,9 @@
-import * as _ from "lodash"
-import { Helpers } from "../../../../../lib";
+import { isUndefined } from 'lodash'
+import { Helpers } from '../../../../../lib'
 
 export default {
-    height: (obj) => {
-        if (_.isUndefined(obj.height)) {
+    height: obj => {
+        if (isUndefined(obj.height)) {
             return null
         }
 

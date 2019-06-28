@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import * as _ from 'lodash'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
 
 import MjContainer from '../../models/MjModels/MjContainer'

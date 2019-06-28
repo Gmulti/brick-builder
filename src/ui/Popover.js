@@ -7,7 +7,7 @@ const SCPopover = styled.div`
     border: 1px solid #e0e5e9;
     border-radius: 3px;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    max-width: ${props => (props.width ? props.width : '300px')};
+    max-width: ${props => (props.width ? props.width : '350px')};
     width: calc(100vw - 24px);
     min-height: ${props => (props.width ? props.width : '240px')};
     position: absolute;

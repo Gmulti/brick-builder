@@ -2,10 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
-import * as _ from 'lodash'
-import { bindActionCreators } from 'redux'
+import { isNull, filter, isUndefined, find, assignIn, orderBy } from 'lodash'
 
-import { TABS_SETTINGS, TABS_BACK } from '../../constants/Tabs'
+import { TABS_SETTINGS } from '../../constants/Tabs'
 import TabsDefault from '../../components/Buttons/TabsDefault'
 
 const propTypes = {
@@ -14,12 +13,12 @@ const propTypes = {
 }
 
 function mapStateToProps(state, ownProps) {
-    const _componentSettings = _.isNull(state.App.componentSettings)
+    const _componentSettings = isNull(state.App.componentSettings)
         ? null
         : ownProps.ConstructModels(state.App.componentSettings)
     return {
         tabs: state.App.tabs,
-        tabActive: _.find(state.App.tabs, { key: state.App.tabActive }),
+        tabActive: find(state.App.tabs, { key: state.App.tabActive }),
         componentSettings: _componentSettings
     }
 }
@@ -40,19 +39,19 @@ class Settings extends Component {
         const { tabs, tabActive } = this.props
 
         let _tabs = tabs
-        if (!_.isUndefined(tabActive.visibleTabsIfActive)) {
+        if (!isUndefined(tabActive.visibleTabsIfActive)) {
             // Filter tabs necessary
-            _tabs = _.filter(tabs, tab => {
+            _tabs = filter(tabs, tab => {
                 if (tab.key === tabActive.key) {
                     // Keep tab active
                     return tab
                 }
 
-                if (_.isUndefined(tabActive.visibleTabsIfActive)) {
+                if (isUndefined(tabActive.visibleTabsIfActive)) {
                     return false
                 }
 
-                const tabFind = _.find(tabActive.visibleTabsIfActive, {
+                const tabFind = find(tabActive.visibleTabsIfActive, {
                     key: tab.key
                 }) // Check on key visibleTabsIfActive
 
@@ -60,11 +59,11 @@ class Settings extends Component {
                     return false
                 }
 
-                return _.assignIn(tab, tabFind)
+                return assignIn(tab, tabFind)
             })
         }
 
-        _tabs = _.orderBy(_tabs, ['order'])
+        _tabs = orderBy(_tabs, ['order'])
 
         return (
             <Tabs
@@ -126,6 +125,10 @@ class Settings extends Component {
                             align-items: center;
                             padding: 16px;
                             font-size: 1.4em;
+                        }
+                        
+                        .tabLink:hover{
+                            cursor:pointer;
                         }
 
                         .tabLink:focus {

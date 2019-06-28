@@ -16,12 +16,10 @@ const SCLayoutCreateComponent = styled.div`
     font-size: 1.4em;
     cursor: pointer;
     user-select: none;
+    box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff,
+        0 1px 1px rgba(25, 30, 35, 0.2);
     svg {
         margin-bottom: 8px;
-    }
-    &: hover {
-        box-shadow: inset 0 0 0 1px #e2e4e7, inset 0 0 0 2px #fff,
-            0 1px 1px rgba(25, 30, 35, 0.2);
     }
     &: active,
         &: focus {

@@ -1,40 +1,39 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import PropTypes from "prop-types"
-import { bindActionCreators } from "redux"
+import PropTypes from 'prop-types'
+import { bindActionCreators } from 'redux'
 
-import { TABS_SETTINGS } from "../../../constants/Tabs"
-import AppActions from "../../../reducers/App/actions"
+import { TABS_SETTINGS } from '../../../constants/Tabs'
+import AppActions from '../../../reducers/App/actions'
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
     const _actions = new AppActions()
     return {
-        actions: bindActionCreators({
-            changeComponentSettings: _actions.changeComponentSettings,
-            changeActiveTabs: _actions.changeActiveTabs
-        }, dispatch)
+        actions: bindActionCreators(
+            {
+                changeComponentSettings: _actions.changeComponentSettings,
+                changeActiveTabs: _actions.changeActiveTabs
+            },
+            dispatch
+        )
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 export class ButtonSettings extends Component {
-    
-    _handleClick = (e) => {
+    _handleClick = e => {
+        const { actions, component } = this.props
 
-        const { actions, component } = this.props
-
-        actions.changeComponentSettings(component)
-                 .then(() => {
-                     actions.changeActiveTabs(TABS_SETTINGS)
-                 })
+        actions.changeComponentSettings(component).then(() => {
+            actions.changeActiveTabs(TABS_SETTINGS)
+        })
     }
 
     render() {
-        return (
-            <div onClick={this._handleClick}>
-                {this.props.children}
-            </div>
-        )
+        return <div onClick={this._handleClick}>{this.props.children}</div>
     }
 }
 
@@ -43,4 +42,3 @@ ButtonSettings.propTypes = {
 }
 
 export default ButtonSettings
-

@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { assignIn, cloneDeep, isUndefined } from 'lodash'
 import Morphism from 'morphism'
 
 import { Helpers } from '../../../../lib'
@@ -11,27 +11,27 @@ import ContainerBackgroundColorSchema from '../../Base/Schema/ContainerBackgroun
 
 const schemaStyle = {}
 
-const schemaAttributes = _.assignIn(
-    _.cloneDeep(PaddingDetailSchema),
-    _.cloneDeep(BorderDetailSchema),
-    _.cloneDeep(WidthSchema),
-    _.cloneDeep(HeightSchema),
-    _.cloneDeep(ContainerBackgroundColorSchema),
+const schemaAttributes = assignIn(
+    cloneDeep(PaddingDetailSchema),
+    cloneDeep(BorderDetailSchema),
+    cloneDeep(WidthSchema),
+    cloneDeep(HeightSchema),
+    cloneDeep(ContainerBackgroundColorSchema),
     {
         'background-color': obj => {
-            if (_.isUndefined(obj['background-color'])) {
+            if (isUndefined(obj['background-color'])) {
                 return null
             }
             return Helpers.transformColorSelector(obj['background-color'])
         },
         'border-radius': obj => {
-            if (_.isUndefined(obj['border-radius'])) {
+            if (isUndefined(obj['border-radius'])) {
                 return null
             }
             return Helpers.transformTypeObject(obj['border-radius'])
         },
         'font-size': obj => {
-            if (_.isUndefined(obj['font-size'])) {
+            if (isUndefined(obj['font-size'])) {
                 return null
             }
             return Helpers.transformTypeObject(obj['font-size'])

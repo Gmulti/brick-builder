@@ -6,8 +6,7 @@ import EditorInserterGridItem from '../../../ui/EditorInserter/EditorInserterGri
 export class MjCreateComponent extends Component {
     get block() {
         return {
-            name: this.props.name,
-            tags: this.props.tags
+            ...this.props
         }
     }
 

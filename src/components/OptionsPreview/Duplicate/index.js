@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faCopy from '@fortawesome/fontawesome-free-solid/faCopy'
 import BaseOption from '../BaseOption'
 

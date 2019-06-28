@@ -1,5 +1,5 @@
 import React from 'react'
-import * as _ from 'lodash'
+import { isEmpty, isUndefined, filter } from 'lodash'
 
 import { TYPE_SECTION } from '../../../../lib/components/models/constant'
 import DragCreate from '../../components/Drag/Create'
@@ -8,7 +8,7 @@ import StaticComponent from '../../components/Static/Component'
 import MjCreateComponent from '../../../../components/CreateMjml/MjCreateComponent' // TODO : Remove this, over dependency
 
 const getComponentCreate = ComponentCreate => {
-    if (!_.isUndefined(ComponentCreate.component)) {
+    if (!isUndefined(ComponentCreate.component)) {
         return ComponentCreate.component
     }
 
@@ -16,9 +16,9 @@ const getComponentCreate = ComponentCreate => {
 }
 
 export default function createDNDComponents(components, drag = true, props) {
-    let ComponentsCreate = _.filter(components, { active: true })
+    let ComponentsCreate = filter(components, { active: true })
 
-    if (_.isEmpty(ComponentsCreate)) {
+    if (isEmpty(ComponentsCreate)) {
         return false
     }
 

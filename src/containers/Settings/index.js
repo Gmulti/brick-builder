@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -19,7 +18,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 export class SettingsContainer extends Component {
     render() {
         return (

@@ -1,7 +1,5 @@
-import Morphism from 'morphism'
 import Schema from './Schema'
 import BaseMj from '../Base'
-import { TYPE_MJ_COLUMN } from '../constant'
 import Column from '../../../lib/components/models/Column'
 
 export default class MjColumn extends BaseMj {

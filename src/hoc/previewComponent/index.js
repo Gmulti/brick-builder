@@ -1,8 +1,7 @@
-import React, { Component } from "react"
-import * as _ from "lodash"
-import jQuery from "jquery"
-import { mjml2html } from "mjml"
-import transformMjComponentAlone from "../../helpers/transformStructureToMjml/transformMjComponentAlone"
+import React, { Component } from 'react'
+import jQuery from 'jquery'
+import { mjml2html } from 'mjml'
+import transformMjComponentAlone from '../../helpers/transformStructureToMjml/transformMjComponentAlone'
 
 export const previewComponent = ComposedComponent => {
     return ComposedComponent =>
@@ -24,12 +23,12 @@ export const previewComponent = ComposedComponent => {
 
             extractComponentHtml = html => {
                 // TODO : Try to remove jQuery
-                let tempDom = jQuery("<output>").append(jQuery.parseHTML(html))
-                let content = jQuery("table", tempDom)
-                    .wrap("<div></div>")
+                let tempDom = jQuery('<output>').append(jQuery.parseHTML(html))
+                let content = jQuery('table', tempDom)
+                    .wrap('<div></div>')
                     .parent()
 
-                let _html = ""
+                let _html = ''
                 if (content.length > 0) {
                     _html = content.html()
                 }

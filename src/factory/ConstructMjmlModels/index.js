@@ -1,9 +1,9 @@
-import * as _ from "lodash"
+import { find, assignIn } from 'lodash'
 
-import Models from "../../models/MjModels"
+import Models from '../../models/MjModels'
 
 export default function ConstructMjmlModels(component) {
-    let ModelChoice = _.find(Models, { type: component.type })
+    let ModelChoice = find(Models, { type: component.type })
 
-    return _.assignIn(new ModelChoice.model(), component)
+    return assignIn(new ModelChoice.model(), component)
 }

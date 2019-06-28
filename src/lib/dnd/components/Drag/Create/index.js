@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types"
-import { DragSource } from 'react-dnd';
-import { ADD_COMPONENT } from "../../../constants"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { DragSource } from 'react-dnd'
+import { ADD_COMPONENT } from '../../../constants'
 
 const cardDrag = {
     beginDrag(props) {
         return {
-            params : props.params
+            params: props.params
         }
     }
 }
@@ -20,13 +20,19 @@ function collectDrag(connect, monitor) {
 }
 
 @DragSource(ADD_COMPONENT, cardDrag, collectDrag)
-export class DragComponent extends Component  {
-
+export class DragComponent extends Component {
     render() {
-        const { connectDragSource } = this.props
+        const { connectDragSource } = this.props
 
         return connectDragSource(
-            <div>
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    flexGrow: 1,
+                    width: '30%'
+                }}
+            >
                 {this.props.children}
             </div>
         )
@@ -38,4 +44,3 @@ DragComponent.propTypes = {
 }
 
 export default DragComponent
-

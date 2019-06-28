@@ -1,5 +1,5 @@
 import React from 'react'
-import * as _ from 'lodash'
+import { find, isUndefined } from 'lodash'
 import { DragSource } from 'react-dnd'
 
 import MjmlPreview from '../../components/MjmlPreview/constant'
@@ -86,9 +86,9 @@ class DragComponent extends DND.Components.Drag.Component {
 }
 
 export default function ConstructPreviewComponent(component, key) {
-    let PreviewComponent = _.find(MjmlPreview, { type: component.type })
+    let PreviewComponent = find(MjmlPreview, { type: component.type })
 
-    if (_.isUndefined(PreviewComponent)) {
+    if (isUndefined(PreviewComponent)) {
         return false
     }
 

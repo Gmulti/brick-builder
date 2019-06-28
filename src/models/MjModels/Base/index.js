@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { extend, isUndefined } from 'lodash'
 import Morphism from 'morphism'
 
 export default class BaseMj {
@@ -32,12 +32,12 @@ export default class BaseMj {
 
     getIndex() {
         // MjSection
-        if (_.isUndefined(this.keySection) && _.isUndefined(this.keyColumn)) {
+        if (isUndefined(this.keySection) && isUndefined(this.keyColumn)) {
             return `mj-${this.key}`
         }
 
         // MjColumn
-        if (_.isUndefined(this.keyColumn)) {
+        if (isUndefined(this.keyColumn)) {
             return `mj-${this.keySection}-${this.key}`
         }
 
@@ -60,7 +60,7 @@ export default class BaseMj {
             _defaultAttributes = this.defaultAttributes
         }
 
-        return _.extend(_defaultAttributes, this.attributes || {})
+        return extend(_defaultAttributes, this.attributes || {})
     }
 
     get componentAttributes() {
@@ -69,7 +69,7 @@ export default class BaseMj {
             _defaultAttributes = this.defaultAttributes
         }
 
-        return _.extend(_defaultAttributes, this.attributes || {})
+        return extend(_defaultAttributes, this.attributes || {})
     }
 
     getStylePreview = () => {
@@ -83,7 +83,7 @@ export default class BaseMj {
 
         const _attributes = this.getAttributes()
 
-        return _.extend(mapper(_attributes), _defaultStylesPreview)
+        return extend(mapper(_attributes), _defaultStylesPreview)
     }
 
     getKey() {

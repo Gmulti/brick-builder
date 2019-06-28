@@ -1,28 +1,26 @@
-import * as _ from "lodash"
-import { Helpers } from "../../../../../lib";
+import { isUndefined } from 'lodash'
+import { Helpers } from '../../../../../lib'
 
 export default {
-    "border-color": (obj) => {
-        if (_.isUndefined(obj["border-color"])) {
+    'border-color': obj => {
+        if (isUndefined(obj['border-color'])) {
             return null
         }
 
-        return Helpers.transformColorSelector(obj["border-color"])
+        return Helpers.transformColorSelector(obj['border-color'])
     },
-    "border-width": (obj) => {
-        
-        if (_.isUndefined(obj["border-width"])) {
+    'border-width': obj => {
+        if (isUndefined(obj['border-width'])) {
             return null
         }
 
-        return Helpers.transformTypeObject(obj["border-width"])
+        return Helpers.transformTypeObject(obj['border-width'])
     },
-    "border-style": (obj) => {
-
-        if (_.isUndefined(obj["border-style"])) {
+    'border-style': obj => {
+        if (isUndefined(obj['border-style'])) {
             return null
         }
 
-        return obj["border-style"]
+        return obj['border-style']
     }
 }

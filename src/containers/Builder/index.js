@@ -6,7 +6,7 @@ import styled from 'styled-components'
 
 const SCLayout = styled.div`
     display: flex;
-    height: 100 %;
+    height: 100%;
 `
 
 const SCLayoutSettings = styled.div`

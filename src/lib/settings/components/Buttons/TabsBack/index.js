@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Tabs, TabLink, TabContent } from 'react-tabs-redux'
+import { TabLink } from 'react-tabs-redux'
 
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faAngleLeft from '@fortawesome/fontawesome-free-solid/faAngleLeft'
 import AppActions from '../../../reducers/App/actions' // TODO : Too dependency
 
@@ -27,7 +26,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 export class TabsBack extends Component {
     _handleClick = e => {
         const { actions, tabDefault } = this.props

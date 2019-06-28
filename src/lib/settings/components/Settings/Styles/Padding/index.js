@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const SCCells = styled.div`
     display: flex;
-    width: 100 %;
+    width: 100%;
 `
 
 const SCCell = styled.div`

@@ -7,7 +7,7 @@ import MjmlPreview from '../../models/MjModels/index'
 const MjSection = _.find(MjmlPreview, { type: MODEL_CONSTANT.TYPE_SECTION })
     .model
 
-const columnsCreate = _.map([1, 2], nb => {
+const columnsCreate = _.map([1, 2, 3], nb => {
     return {
         active: true,
         type: MODEL_CONSTANT.TYPE_SECTION,
