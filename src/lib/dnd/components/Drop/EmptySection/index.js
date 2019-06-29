@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined, isEmpty } from 'lodash'
 import { connect } from 'react-redux'
 import { DropTarget } from 'react-dnd'
 import { bindActionCreators } from 'redux'
@@ -12,8 +12,7 @@ import {
     ADD_COMPONENT,
     MOVE_COLUMN,
     MOVE_COMPONENT,
-    FROM_EMPTY_SECTION,
-    ADD_SECTION
+    FROM_EMPTY_SECTION
 } from '../../../constants'
 import TemplatingAction from '../../../reducers/Templating/actions'
 import { dropHover } from '../../../hoc/dropHover'
@@ -26,7 +25,7 @@ const SCDropEmptySectionHoverElement = styled.div`
     position: absolute;
     height: 0px;
     width: 100%;
-    background: green;
+    background: #02a0d2;
     z-index: 1000;
     transition: all 0.2s ease-in;
 `
@@ -64,7 +63,7 @@ const cardDrop = {
                     FROM_EMPTY_SECTION
                 )
 
-                if (_.isUndefined(payload) || _.isEmpty(payload)) {
+                if (isUndefined(payload) || isEmpty(payload)) {
                     return
                 }
 
@@ -84,7 +83,7 @@ const cardDrop = {
                     FROM_EMPTY_SECTION
                 )
 
-                if (_.isUndefined(payload) || _.isEmpty(payload)) {
+                if (isUndefined(payload) || isEmpty(payload)) {
                     return
                 }
 
@@ -127,7 +126,10 @@ function collectDrop(connect, monitor) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 @DropTarget(
     [ADD_COLUMN, ADD_COMPONENT, MOVE_COLUMN, MOVE_COMPONENT],
     cardDrop,

@@ -11,11 +11,13 @@ const SCLayout = styled.div`
 
 const SCLayoutSettings = styled.div`
     border-left: 2px solid #e2e4e7;
-    flex: 1;
+    width: 25%;
+    min-width: 340px;
 `
 
 const SCLayoutPreview = styled.div`
     flex: 3;
+    width: 75%;
 `
 
 class Builder extends Component {

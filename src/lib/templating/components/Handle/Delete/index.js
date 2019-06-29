@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined } from 'lodash'
 import { bindActionCreators } from 'redux'
 
 import TemplatingAction from '../../../reducers/Templating/actions'
@@ -20,22 +20,25 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 export class HandleDelete extends Component {
     _handleClick = e => {
         const { actions, component } = this.props
 
         // Section
         if (
-            _.isUndefined(component.keySection) &&
-            _.isUndefined(component.keyColumn)
+            isUndefined(component.keySection) &&
+            isUndefined(component.keyColumn)
         ) {
             actions.deleteSection(component)
             return
         }
 
         // Column
-        if (_.isUndefined(component.keyColumn)) {
+        if (isUndefined(component.keyColumn)) {
             actions.deleteColumn(component)
             return
         }

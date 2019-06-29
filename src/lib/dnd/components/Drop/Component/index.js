@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined, isEmpty } from 'lodash'
 import { connect } from 'react-redux'
 import { DropTarget } from 'react-dnd'
 import { bindActionCreators } from 'redux'
@@ -20,7 +20,7 @@ const SCDropColumnHoverElement = styled.div`
     position: absolute;
     height: 0px;
     width: 100%;
-    background: green;
+    background: #02a0d2;
     z-index: 1000;
     transition: all 0.2s ease -in;
 `
@@ -49,7 +49,7 @@ const cardDrop = {
                     component
                 )
 
-                if (_.isUndefined(payload) || _.isEmpty(payload)) {
+                if (isUndefined(payload) || isEmpty(payload)) {
                     return
                 }
 

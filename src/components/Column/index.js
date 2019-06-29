@@ -6,6 +6,8 @@ import styled from 'styled-components'
 
 import MjColumn from '../../models/MjModels/MjColumn'
 import ConstructPreviewComponent from '../../factory/ConstructPreviewComponent'
+import { Templating, Settings, DND } from '../../lib'
+import OptionsPreview from '../OptionsPreview'
 import EmptyColumn from '../../lib/dnd/components/Drop/EmptyColumn'
 import Empty from './Empty'
 
@@ -31,6 +33,15 @@ const SCLayoutColumn = styled.div`
     }
 `
 
+const SCColumnAction = styled.div`
+    position: absolute;
+    width: 120px
+    right: -130px;
+    top: 0;
+    z-index: 50;
+    display: flex;
+`
+
 const mapStateToProps = (state, ownProps) => {
     const column = assignIn(new MjColumn(), ownProps.column)
 
@@ -53,6 +64,36 @@ export class Column extends Component {
 
         return (
             <SCLayoutColumn style={column.getStylePreview()}>
+                <SCColumnAction>
+                    <DND.Components.Drag.Component>
+                        <OptionsPreview.Drag
+                            style={{
+                                backgroundColor: '#02a0d2'
+                            }}
+                        />
+                    </DND.Components.Drag.Component>
+                    <Templating.Components.Handle.Delete component={column}>
+                        <OptionsPreview.Delete
+                            style={{
+                                backgroundColor: '#02a0d2'
+                            }}
+                        />
+                    </Templating.Components.Handle.Delete>
+                    <Templating.Components.Handle.Duplicate component={column}>
+                        <OptionsPreview.Duplicate
+                            style={{
+                                backgroundColor: '#02a0d2'
+                            }}
+                        />
+                    </Templating.Components.Handle.Duplicate>
+                    <Settings.Components.Buttons.Settings component={column}>
+                        <OptionsPreview.Settings
+                            style={{
+                                backgroundColor: '#02a0d2'
+                            }}
+                        />
+                    </Settings.Components.Buttons.Settings>
+                </SCColumnAction>
                 {isEmpty(components) || isUndefined(components) ? (
                     <EmptyColumn column={column}>
                         <Empty column={column} />

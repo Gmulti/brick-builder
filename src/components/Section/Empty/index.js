@@ -1,20 +1,19 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import { DND } from '../../../lib'
 import ChoiceColumn from './ChoiceColumn'
 
 import styled from 'styled-components'
 
 const SCEmptySection = styled.div`
     padding: 20px 30px;
-    background- color: #fff;
+    background-color: #fff;
 `
 
 const SCEmptySectionColumns = styled.div`
     display: flex;
-    flex- wrap: wrap;
-    justify- content: space - between;
+    flex-wrap: wrap;
+    justify-content: space-between;
 `
 
 export class SectionEmpty extends Component {
@@ -25,7 +24,7 @@ export class SectionEmpty extends Component {
 
         return (
             <SCEmptySection>
-                <p>Choisissez une disposition pour commencer</p>
+                <p>Choose a layout to start</p>
                 <SCEmptySectionColumns>
                     {nbChooseColumns.map((nbColumn, key) => {
                         return (

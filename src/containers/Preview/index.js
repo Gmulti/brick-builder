@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { assignIn, orderBy } from 'lodash'
 
 import Section from '../../components/Section'
 import MjContainer from '../../models/MjModels/MjContainer'
 
 function mapStateToProps(state, ownProps) {
     return {
-        container: _.assignIn(new MjContainer(), state.Templating.container),
-        sections: _.orderBy(state.Templating.sections, 'order', 'asc')
+        container: assignIn(new MjContainer(), state.Templating.container),
+        sections: orderBy(state.Templating.sections, 'order', 'asc')
     }
 }
 

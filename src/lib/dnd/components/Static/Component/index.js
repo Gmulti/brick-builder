@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import * as _ from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { DND } from '../../../../index'
@@ -20,7 +18,10 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 export class StaticComponent extends Component {
     _handleClickAddComponent = () => {
         const { keySection, keyColumn, params, actions } = this.props

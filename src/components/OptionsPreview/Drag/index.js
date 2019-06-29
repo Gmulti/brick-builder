@@ -8,7 +8,7 @@ import BaseOption from '../BaseOption'
 class Drag extends Component {
     render() {
         return (
-            <BaseOption>
+            <BaseOption style={this.props.style || {}}>
                 <FontAwesomeIcon icon={faArrowsAlt} />
             </BaseOption>
         )

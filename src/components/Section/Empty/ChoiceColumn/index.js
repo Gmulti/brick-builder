@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { DND } from '../../../../lib'
 import { TYPE_COLUMN } from '../../../../lib/components/models/constant'

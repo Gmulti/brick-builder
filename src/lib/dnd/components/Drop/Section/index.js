@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined } from 'lodash'
 import { connect } from 'react-redux'
 import { DropTarget } from 'react-dnd'
 import { bindActionCreators } from 'redux'
@@ -21,7 +21,7 @@ const SCDropSectionHoverElement = styled.div`
     position: absolute;
     height: 0px;
     width: 100%;
-    background: red;
+    background: #d20202;
     z-index: 1000;
     transition: all 0.2s ease-in;
 `
@@ -84,7 +84,7 @@ const cardDrop = {
                     monitor,
                     component
                 )
-                if (_.isUndefined(payload)) {
+                if (isUndefined(payload)) {
                     return
                 }
 
@@ -116,7 +116,10 @@ function collectDrop(connect, monitor) {
     }
 }
 
-@connect(null, mapDispatchToProps)
+@connect(
+    null,
+    mapDispatchToProps
+)
 @DropTarget([MOVE_SECTION, ADD_SECTION], cardDrop, collectDrop)
 @dropHover()
 export class DropSection extends Component {

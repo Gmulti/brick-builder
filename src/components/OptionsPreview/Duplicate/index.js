@@ -7,7 +7,7 @@ import BaseOption from '../BaseOption'
 class Duplicate extends Component {
     render() {
         return (
-            <BaseOption>
+            <BaseOption style={this.props.style || {}}>
                 <FontAwesomeIcon icon={faCopy} />
             </BaseOption>
         )

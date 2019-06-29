@@ -1,5 +1,4 @@
 import React from 'react'
-import propTypes from 'prop-types'
 import styled from 'styled-components'
 
 import PlusSvg from '../svg/plus'
@@ -10,8 +9,9 @@ const SCBlockWrap = styled.div`
     display: flex;
     position: relative;
     margin: 0px auto;
-    width: 96%;
-    max-width: 700px;
+    width: 100%;
+    max-width: ${({ maxContainer }) =>
+        !!!maxContainer ? '800px' : maxContainer};
 `
 
 const SCBlockSelected = styled.div`
@@ -153,16 +153,18 @@ class Block extends React.Component {
     }
     render() {
         const { hovered, focused } = this.state
-        const { selected, newBlock, children } = this.props
+        const { selected, newBlock, children, type = 'section' } = this.props
         const visible = hovered || focused || selected || newBlock
         return (
             <SCBlockWrap
                 selected={this.props.selected}
                 onMouseEnter={this.handleMouseEnter}
                 onMouseLeave={this.handleMouseLeave}
+                type={type}
             >
                 <SCBlockAction
                     style={{ visibility: visible ? 'visible' : 'hidden' }}
+                    type={type}
                 >
                     {React.Children.map(children, child => {
                         if (child.type.name !== 'BlockAction') {
@@ -178,6 +180,7 @@ class Block extends React.Component {
                     onBlur={this.handleBlur}
                     focused={this.state.focused}
                     className={visible ? 'visibleLines' : null}
+                    type={type}
                 >
                     {React.Children.map(children, (child, i) => {
                         if (
@@ -193,6 +196,7 @@ class Block extends React.Component {
 
                 <SCBlockMore
                     style={{ visibility: visible ? 'visible' : 'hidden' }}
+                    type={type}
                 >
                     {React.Children.map(children, child => {
                         if (child.type.name !== 'BlockMore') {
@@ -202,7 +206,7 @@ class Block extends React.Component {
                         return child
                     })}
                 </SCBlockMore>
-                {selected && <SCBlockSelected />}
+                {selected && <SCBlockSelected type={type} />}
             </SCBlockWrap>
         )
     }

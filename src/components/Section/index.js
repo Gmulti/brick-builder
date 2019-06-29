@@ -1,21 +1,17 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { chain, assignIn, isEmpty, isUndefined } from 'lodash'
 import { connect } from 'react-redux'
 import { DragSource } from 'react-dnd'
-import { bindActionCreators } from 'redux'
 import { DND, Helpers, Templating, Settings } from '../../lib'
 import OptionsPreview from '../OptionsPreview'
 
-import TemplatingAction from '../../reducers/Templating/actions'
 import MjSection from '../../models/MjModels/MjSection'
 import MjContainer from '../../models/MjModels/MjContainer'
 import Column from '../Column'
 import EmptySection from '../../lib/dnd/components/Drop/EmptySection'
 import Empty from './Empty/index'
 
-import OptionsPreviewSection from '../../components/OptionsPreview/Container/Section'
-import OptionDrag from '../../components/OptionsPreview/Drag'
 import Block, { BlockAction, BlockMore } from '../../ui/Block'
 import BlockButton from '../../ui/Block/BlockButton'
 import DragSvg from '../../ui/svg/drag'
@@ -28,22 +24,13 @@ const SCLayoutSection = styled.div`
     box-sizing: border - box;
 `
 
-const SCLayoutAllSection = styled.div`
-    position: relative;
-    :hover {
-        .options {
-            display: flex;
-        }
-    }
-`
-
 function mapStateToProps(state, ownProps) {
-    const section = _.assignIn(new MjSection(), ownProps.section)
-    const container = _.assignIn(new MjContainer(), state.Templating.container)
+    const section = assignIn(new MjSection(), ownProps.section)
+    const container = assignIn(new MjContainer(), state.Templating.container)
     return {
         container: container,
         section: section,
-        columns: _.chain(state.Templating.columns)
+        columns: chain(state.Templating.columns)
             .filter({ keySection: section.getKey() })
             .orderBy('order', 'asc')
             .value()
@@ -114,31 +101,30 @@ export class Section extends Component {
                                             </BlockButton>
                                         </span>
                                     )}
+                                    <Templating.Components.Handle.Delete
+                                        component={section}
+                                    >
+                                        <OptionsPreview.Delete />
+                                    </Templating.Components.Handle.Delete>
+                                    <Templating.Components.Handle.Duplicate
+                                        component={section}
+                                    >
+                                        <OptionsPreview.Duplicate />
+                                    </Templating.Components.Handle.Duplicate>
+                                    <Settings.Components.Buttons.Settings
+                                        component={section}
+                                    >
+                                        <OptionsPreview.Settings />
+                                    </Settings.Components.Buttons.Settings>
                                 </BlockAction>
 
-                                {/*// <Templating.Components.Handle.Delete
-                                //     component={section}
-                                // >
-                                //     <OptionsPreview.Delete />
-                                // </Templating.Components.Handle.Delete>
-                                // <Templating.Components.Handle.Duplicate
-                                //     component={section}
-                                // >
-                                //     <OptionsPreview.Duplicate />
-                                // </Templating.Components.Handle.Duplicate>
-
-                                // <Settings.Components.Buttons.Settings
-                                //     component={section}
-                                // >
-                                //     <OptionsPreview.Settings />
-                                // </Settings.Components.Buttons.Settings>*/}
                                 <SCLayoutSection
                                     id={section.getIndex()}
                                     style={_styleSection}
                                 >
                                     <div style={_styleInSection}>
-                                        {_.isEmpty(columns) ||
-                                        _.isUndefined(columns) ? (
+                                        {isEmpty(columns) ||
+                                        isUndefined(columns) ? (
                                             <EmptySection section={section}>
                                                 <Empty section={section} />
                                             </EmptySection>

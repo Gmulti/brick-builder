@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import * as FA from '@fortawesome/fontawesome-free-solid/index.js'
 
-import BaseCreateComponent from '../../CreateMjml/BaseCreateComponent'
+import EditorInserterGridItem from '../../../ui/EditorInserter/EditorInserterGridItem'
 
 export class MjCreateSection extends Component {
+    get block() {
+        return {
+            ...this.props
+        }
+    }
     render() {
-        const { nbColumn } = this.props
-        return <BaseCreateComponent>Column(s) : {nbColumn}</BaseCreateComponent>
+        return <EditorInserterGridItem block={this.block} />
     }
 }
 

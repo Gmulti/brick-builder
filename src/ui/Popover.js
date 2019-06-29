@@ -27,10 +27,10 @@ const SCPopover = styled.div`
         border-top-color: ${props =>
             props.positionY === 'top' ? 'transparent' : '#FFF'};
         border-bottom-color: ${props =>
-            props.positionY === 'top' ? '#FFF' : 'transparent'};
+            props.positionY === 'top' ? '#e0e5e9' : 'transparent'};
         z-index: 3;
-        bottom: ${props => (props.positionY === 'top' ? 'auto' : '-16px')};
-        top: ${props => (props.positionY === 'top' ? '-16px' : 'auto')};
+        bottom: ${props => (props.positionY === 'top' ? 'auto' : '-20px')};
+        top: ${props => (props.positionY === 'top' ? '-20px' : 'auto')};
         left: ${props => (props.positionX === 'right' ? 'auto' : '7px')};
         right: ${props => (props.positionX === 'right' ? '7px' : 'auto')};
     }
@@ -41,8 +41,8 @@ const SCPopover = styled.div`
             props.positionY === 'top' ? 'transparent' : '#E0E5E9'};
         border-bottom-color: ${props =>
             props.positionY === 'top' ? '#E0E5E9' : 'transparent'};
-        bottom: ${props => (props.positionY === 'top' ? 'auto' : '-18px')};
-        top: ${props => (props.positionY === 'top' ? '-18px' : 'auto')};
+        bottom: ${props => (props.positionY === 'top' ? 'auto' : '-20px')};
+        top: ${props => (props.positionY === 'top' ? '-20px' : 'auto')};
     }
 `
 
