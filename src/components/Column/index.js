@@ -64,36 +64,6 @@ export class Column extends Component {
 
         return (
             <SCLayoutColumn style={column.getStylePreview()}>
-                <SCColumnAction>
-                    <DND.Components.Drag.Component>
-                        <OptionsPreview.Drag
-                            style={{
-                                backgroundColor: '#02a0d2'
-                            }}
-                        />
-                    </DND.Components.Drag.Component>
-                    <Templating.Components.Handle.Delete component={column}>
-                        <OptionsPreview.Delete
-                            style={{
-                                backgroundColor: '#02a0d2'
-                            }}
-                        />
-                    </Templating.Components.Handle.Delete>
-                    <Templating.Components.Handle.Duplicate component={column}>
-                        <OptionsPreview.Duplicate
-                            style={{
-                                backgroundColor: '#02a0d2'
-                            }}
-                        />
-                    </Templating.Components.Handle.Duplicate>
-                    <Settings.Components.Buttons.Settings component={column}>
-                        <OptionsPreview.Settings
-                            style={{
-                                backgroundColor: '#02a0d2'
-                            }}
-                        />
-                    </Settings.Components.Buttons.Settings>
-                </SCColumnAction>
                 {isEmpty(components) || isUndefined(components) ? (
                     <EmptyColumn column={column}>
                         <Empty column={column} />

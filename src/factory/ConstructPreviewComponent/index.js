@@ -1,20 +1,27 @@
 import React from 'react'
-import { find, isUndefined } from 'lodash'
+import { find, isUndefined, isNull } from 'lodash'
 import { DragSource } from 'react-dnd'
+import { connect } from 'react-redux'
 
 import MjmlPreview from '../../components/MjmlPreview/constant'
-import OptionsPreview from '../../components/OptionsPreview/Container/Component'
+import OptionsPreviewContainer from '../../components/OptionsPreview/Container/Component'
 import OptionDrag from '../../components/OptionsPreview/Drag'
 import OptionSettings from '../../components/OptionsPreview/Settings'
 import OptionDelete from '../../components/OptionsPreview/Delete'
+import ConstructMjmlModels from '../../factory/ConstructMjmlModels'
 import OptionDuplicate from '../../components/OptionsPreview/Duplicate'
 import { DND, Settings, Templating } from '../../lib'
 import styled from 'styled-components'
 
 const SCLayout = styled.div`
     position: relative;
+    border: 2px solid ${({ isActive }) =>
+        isActive ? '#02a0d2' : 'transparent'}
+    
+
     :hover {
-        .options {
+        border-color:#02a0d2;
+        .options__preview__container {
             display: flex;
         }
     }
@@ -38,6 +45,17 @@ function collectDrag(connect, monitor) {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    const _componentSettings = isNull(state.App.componentSettings)
+        ? null
+        : ConstructMjmlModels(state.App.componentSettings)
+    return {
+        component: ConstructMjmlModels(ownProps.component),
+        componentSettings: _componentSettings
+    }
+}
+
+@connect(mapStateToProps)
 @DragSource(DND.Constants.MOVE_COMPONENT, cardDrag, collectDrag)
 class DragComponent extends DND.Components.Drag.Component {
     render() {
@@ -45,36 +63,70 @@ class DragComponent extends DND.Components.Drag.Component {
             connectDragPreview,
             connectDragSource,
             PreviewComponent,
-            component
+            component,
+            componentSettings
         } = this.props
 
         return connectDragPreview(
             <span>
-                <SCLayout>
-                    <OptionsPreview>
+                <SCLayout
+                    isActive={
+                        !isNull(componentSettings) &&
+                        component.getIndex() === componentSettings.getIndex()
+                    }
+                >
+                    <OptionsPreviewContainer>
                         {connectDragSource(
                             <span>
-                                <OptionDrag />
+                                <OptionDrag
+                                    style={{
+                                        backgroundColor: '#02a0d2',
+                                        fontSize: '14px',
+                                        padding: '6px',
+                                        borderRadis: '0px'
+                                    }}
+                                />
                             </span>
                         )}
                         <Templating.Components.Handle.Delete
                             component={component}
                         >
-                            <OptionDelete />
+                            <OptionDelete
+                                style={{
+                                    backgroundColor: '#02a0d2',
+                                    fontSize: '12px',
+                                    padding: '5px',
+                                    borderRadis: '0px'
+                                }}
+                            />
                         </Templating.Components.Handle.Delete>
 
                         <Templating.Components.Handle.Duplicate
                             component={component}
                         >
-                            <OptionDuplicate />
+                            <OptionDuplicate
+                                style={{
+                                    backgroundColor: '#02a0d2',
+                                    fontSize: '12px',
+                                    padding: '5px',
+                                    borderRadis: '0px'
+                                }}
+                            />
                         </Templating.Components.Handle.Duplicate>
 
                         <Settings.Components.Buttons.Settings
                             component={component}
                         >
-                            <OptionSettings />
+                            <OptionSettings
+                                style={{
+                                    backgroundColor: '#02a0d2',
+                                    fontSize: '12px',
+                                    padding: '5px',
+                                    borderRadis: '0px'
+                                }}
+                            />
                         </Settings.Components.Buttons.Settings>
-                    </OptionsPreview>
+                    </OptionsPreviewContainer>
 
                     <Settings.Components.Buttons.Settings component={component}>
                         <PreviewComponent.component component={component} />

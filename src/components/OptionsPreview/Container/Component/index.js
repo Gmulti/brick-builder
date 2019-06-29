@@ -1,6 +1,4 @@
 import React, { Component, Fragment } from 'react'
-
-import classnames from 'classnames'
 import styled from 'styled-components'
 
 const SCLayoutOption = styled.div`
@@ -9,18 +7,19 @@ const SCLayoutOption = styled.div`
     right: 0;
     top: 0;
     z-index: 9999;
-    position: relative;
-
-    :hover {
-        .options {
-            display: flex;
-        }
+    background-color: #02a0d2;
+    &:hover {
+        display: flex;
     }
 `
 
 export class OptionsPreview extends Component {
     render() {
-        return <SCLayoutOption>{this.props.children}</SCLayoutOption>
+        return (
+            <SCLayoutOption className="options__preview__container">
+                {this.props.children}
+            </SCLayoutOption>
+        )
     }
 }
 

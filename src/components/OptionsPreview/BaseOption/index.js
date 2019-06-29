@@ -3,13 +3,15 @@ import { isUndefined } from 'lodash'
 import styled from 'styled-components'
 
 const SCLayout = styled.div`
-    padding: 8px;
+    padding: ${({ padding }) => (!isUndefined(padding) ? padding : '8px')};
     color: #fff;
-    font-size: 14px;
+    font-size: ${({ fontSize }) =>
+        !isUndefined(fontSize) ? fontSize : '14px'};
     margin: 0 2px;
     background-color: ${({ backgroundColor }) =>
         !isUndefined(backgroundColor) ? backgroundColor : '#32373c'};
-    border-radius: 5px;
+    border-radius: ${({ borderRadius }) =>
+        !isUndefined(borderRadius) ? borderRadius : '5px'};
     :hover {
         cursor: pointer;
     }
