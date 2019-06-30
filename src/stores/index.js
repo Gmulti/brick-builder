@@ -10,12 +10,13 @@ import moduleReducers from '../reducers/index'
 import initialStateApp from '../reducers/App/initialState'
 import initialStateTemplating from '../reducers/Templating/initialState'
 import initialStateTemplatingTest from '../reducers/Templating/templateTest'
+const dev = process.env.NODE_ENV !== 'production'
 
 const configureStore = initialState => {
     let store = false
 
     const composeEnhancers =
-        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+        (dev && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
     const initState = merge(
         { App: initialStateApp },
         { Templating: initialStateTemplatingTest },
@@ -23,13 +24,15 @@ const configureStore = initialState => {
     )
 
     const epicMiddleware = createEpicMiddleware(rootEpics)
+    let middlewares = [thunkMiddleware, epicMiddleware]
+    if (dev) {
+        middlewares.push(createLogger())
+    }
 
     store = createStore(
         moduleReducers,
         initState,
-        composeEnhancers(
-            applyMiddleware(createLogger(), thunkMiddleware, epicMiddleware)
-        )
+        composeEnhancers(applyMiddleware(...middlewares))
     )
 
     return store

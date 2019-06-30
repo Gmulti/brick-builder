@@ -52,10 +52,17 @@ const cardDrop = {
                     component
                 )
 
-                const newSection = DND.Helpers.Drop.Create.Section(payload)
+                const {
+                    createNbColumn,
+                    typeColumn,
+                    type
+                } = monitor.getItem().params
+                const newSection = DND.Helpers.Drop.Create.Section({
+                    ...payload,
+                    type
+                })
 
                 newColumn = []
-                const { createNbColumn, typeColumn } = monitor.getItem().params
 
                 for (let i = 0; i < createNbColumn; i++) {
                     newColumn.push(

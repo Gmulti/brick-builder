@@ -1,9 +1,10 @@
+import { isUndefined } from 'lodash'
 import { Settings } from '../../lib'
 import * as CONSTANT from './actions/constant'
 import initialState from './initialState'
 
 function app(state = initialState, action) {
-    if (_.isUndefined(action)) {
+    if (isUndefined(action)) {
         return state
     }
 

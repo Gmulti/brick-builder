@@ -7,7 +7,6 @@ export default function constructStructureTemplating(state) {
     if (isUndefined(state.sections)) {
         return {}
     }
-
     let constructStructure = state => {
         return chain(state.sections)
             .map((section, keySection) => {
