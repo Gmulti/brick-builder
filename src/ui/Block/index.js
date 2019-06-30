@@ -1,10 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import PlusSvg from '../svg/plus'
-import MoreSvg from '../svg/more'
-import DragSvg from '../svg/drag'
-
 const SCBlockWrap = styled.div`
     display: flex;
     position: relative;
@@ -31,34 +27,34 @@ const SCBlockAction = styled.div`
     margin: 5px 0px;
 `
 
-const SCButton = styled.button`
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 22px;
-    height: 22px;
-    border: none;
-    background: none;
-    outline: none;
-    padding: 0;
-    border-radius: 2px;
-    cursor: ${props => (props.cursor ? props.cursor : 'pointer')};
+// const SCButton = styled.button`
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     width: 22px;
+//     height: 22px;
+//     border: none;
+//     background: none;
+//     outline: none;
+//     padding: 0;
+//     border-radius: 2px;
+//     cursor: ${props => (props.cursor ? props.cursor : 'pointer')};
 
-    &:hover {
-        background: ${props => props.theme.buttonBg};
-        path {
-            fill: ${props => props.theme.baseBlockColorHover};
-        }
-    }
+//     &:hover {
+//         background: ${props => props.theme.buttonBg};
+//         path {
+//             fill: ${props => props.theme.baseBlockColorHover};
+//         }
+//     }
 
-    path {
-        fill: ${props => props.theme.baseBlockColor};
-    }
+//     path {
+//         fill: ${props => props.theme.baseBlockColor};
+//     }
 
-    & + & {
-        margin-left: 4px;
-    }
-`
+//     & + & {
+//         margin-left: 4px;
+//     }
+// `
 
 const SCBlockMore = styled.div`
     display: flex;

@@ -1,12 +1,12 @@
 import Morphism from 'morphism'
-import * as _ from 'lodash'
+import { isUndefined } from 'lodash'
 import DEFAULT_ATTRIBUTES from '../DefaultAttributes'
 
 import { Helpers } from '../../../../lib'
 
 const schemaStyle = {
     backgroundColor: obj => {
-        if (_.isUndefined(obj['background-color'])) {
+        if (isUndefined(obj['background-color'])) {
             return Helpers.transformColorSelector(
                 DEFAULT_ATTRIBUTES['background-color']
             )
@@ -18,7 +18,7 @@ const schemaStyle = {
 
 const schemaAttributes = {
     'background-color': obj => {
-        if (_.isUndefined(obj['background-color'])) {
+        if (isUndefined(obj['background-color'])) {
             return Helpers.transformColorSelector(
                 DEFAULT_ATTRIBUTES['background-color']
             )
@@ -27,7 +27,7 @@ const schemaAttributes = {
         return Helpers.transformColorSelector(obj['background-color'])
     },
     width: obj => {
-        if (_.isUndefined(obj.width)) {
+        if (isUndefined(obj.width)) {
             return Helpers.transformTypeObject(DEFAULT_ATTRIBUTES.width)
         }
 

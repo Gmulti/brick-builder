@@ -1,5 +1,4 @@
 import {
-    WIDTH,
     GROUP_NAME,
     PADDING,
     BACKGROUND_COLOR,
@@ -7,7 +6,7 @@ import {
 } from '../../../../lib/settings/components/Settings'
 import { HANDLE_COLOR } from '../../../../lib/settings/constants/Handle'
 import { COLOR } from '../../../../lib/settings/constants/BaseStyles'
-import * as _ from 'lodash'
+import { isEmpty } from 'lodash'
 
 export default [
     {
@@ -41,7 +40,7 @@ export default [
                 const nodes = document.querySelectorAll(`#${index} img`)
                 let _nodesSelect = []
 
-                if (_.isEmpty(nodes)) {
+                if (isEmpty(nodes)) {
                     return _nodesSelect
                 }
 

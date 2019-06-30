@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
@@ -80,7 +80,7 @@ function mapDispatchToProps(dispatch) {
     null,
     mapDispatchToProps
 )
-export class ChoiceColumn extends Component {
+class ChoiceColumn extends Component {
     addColumns = () => {
         const { actions, section, nbColumn } = this.props
 

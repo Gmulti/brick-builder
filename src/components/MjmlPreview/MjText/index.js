@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as _ from 'lodash'
+import { assignIn, debounce } from 'lodash'
 import { Editor } from '@tinymce/tinymce-react'
 
 import { previewComponent } from '../../../hoc/previewComponent'
 import MjTextModel from '../../../models/MjModels/MjText'
-import BaseMjModel from '../../../models/MjModels/Base'
 import TemplatingAction from '../../../reducers/Templating/actions'
 
 function mapStateToProps(state, ownProps) {
     return {
-        component: _.assignIn(new MjTextModel(), ownProps.component)
+        component: assignIn(new MjTextModel(), ownProps.component)
     }
 }
 
@@ -48,11 +47,11 @@ const fontSystem = ['Arial', 'Tahoma', 'Trebuchet MS', 'Georgia', 'Verdana']
     mapDispatchToProps
 )
 @previewComponent()
-export class MjText extends Component {
+class MjText extends Component {
     constructor(props) {
         super(props)
 
-        this._handleChangeThrottle = _.debounce(
+        this._handleChangeThrottle = debounce(
             component => {
                 props.actions.updateComponent(component)
             },

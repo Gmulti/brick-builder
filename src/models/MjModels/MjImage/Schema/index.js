@@ -1,7 +1,5 @@
-import * as _ from 'lodash'
+import { cloneDeep, assignIn } from 'lodash'
 import Morphism from 'morphism'
-
-import { Helpers } from '../../../../lib'
 
 import PaddingDetailSchema from '../../Base/Schema/PaddingDetail'
 import WidthSchema from '../../Base/Schema/Width'
@@ -10,11 +8,11 @@ import ContainerBackgroundColorSchema from '../../Base/Schema/ContainerBackgroun
 
 const schemaStyle = {}
 
-const schemaAttributes = _.assignIn(
-    _.cloneDeep(PaddingDetailSchema),
-    _.cloneDeep(WidthSchema),
-    _.cloneDeep(HeightSchema),
-    _.cloneDeep(ContainerBackgroundColorSchema),
+const schemaAttributes = assignIn(
+    cloneDeep(PaddingDetailSchema),
+    cloneDeep(WidthSchema),
+    cloneDeep(HeightSchema),
+    cloneDeep(ContainerBackgroundColorSchema),
     {
         src: 'src',
         href: 'href',

@@ -1,6 +1,4 @@
-import * as _ from 'lodash'
 import {
-    WIDTH,
     GROUP_NAME,
     PADDING,
     BACKGROUND_COLOR

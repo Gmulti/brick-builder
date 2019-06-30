@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import ConstructSettingsComponent from '../../../helpers/ConstructSettingsComponent'
@@ -18,20 +18,20 @@ export class SettingsComponent extends Component {
 
         if (!component) {
             return (
-                <Fragment>
+                <>
                     <SCEmptyBlockSelected>
                         No block selected
                     </SCEmptyBlockSelected>
-                </Fragment>
+                </>
             )
         }
 
         return (
-            <Fragment>
+            <>
                 {ConstructSettingsComponent(component, {
                     actions: actions
                 })}
-            </Fragment>
+            </>
         )
     }
 }

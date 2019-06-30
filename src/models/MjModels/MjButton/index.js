@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import DEFAULT_ATTRIBUTES from './DefaultAttributes'
 import BaseMj from '../Base'
 import Schema from './Schema'
@@ -11,7 +11,7 @@ export default class MjButton extends BaseMj {
 
     tagName = 'mj-button'
 
-    defaultAttributes = _.cloneDeep(DEFAULT_ATTRIBUTES)
+    defaultAttributes = cloneDeep(DEFAULT_ATTRIBUTES)
 
     schema = Schema
 

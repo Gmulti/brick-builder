@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined, debounce } from 'lodash'
 
 import { Helpers } from '../../../../../lib'
 import { withHandleSelector } from '../../../hoc/withHandleSelector'
@@ -16,7 +16,7 @@ class HandleChangeWithType extends Component {
     constructor(props) {
         super(props)
 
-        this._handleChangeThrottle = _.debounce(
+        this._handleChangeThrottle = debounce(
             _newComponent => {
                 handleUpdate(_newComponent, props.actions)
             },
@@ -45,11 +45,11 @@ class HandleChangeWithType extends Component {
     getDefaultTypeObject() {
         const { defaultTypeObject } = this.props
 
-        if (!_.isUndefined(defaultTypeObject)) {
+        if (!isUndefined(defaultTypeObject)) {
             return defaultTypeObject
         }
 
-        if (!_.isUndefined(this.defaultTypeObject)) {
+        if (!isUndefined(this.defaultTypeObject)) {
             return this.defaultTypeObject
         }
 
@@ -72,7 +72,7 @@ class HandleChangeWithType extends Component {
             }
         }
 
-        if (_.isUndefined(_newComponent.attributes[getStyleKey()].type)) {
+        if (isUndefined(_newComponent.attributes[getStyleKey()].type)) {
             _newComponent.attributes[getStyleKey()].type = defaultType
         }
 
@@ -103,7 +103,7 @@ class HandleChangeWithType extends Component {
             }
         }
 
-        if (_.isUndefined(_newComponent.styles[getStyleKey()].value)) {
+        if (isUndefined(_newComponent.styles[getStyleKey()].value)) {
             _newComponent.styles[getStyleKey()].value = 0
         }
 
@@ -127,7 +127,7 @@ class HandleChangeWithType extends Component {
             React.cloneElement(child, this.getChildProps())
         )
 
-        return <Fragment>{childrenWithProps}</Fragment>
+        return <>{childrenWithProps}</>
     }
 }
 

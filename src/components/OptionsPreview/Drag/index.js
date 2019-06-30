@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import faArrowsAlt from '@fortawesome/fontawesome-free-solid/faArrowsAlt'

@@ -1,5 +1,4 @@
 import { Settings } from '../../lib'
-import * as _ from 'lodash'
 import * as CONSTANT from './actions/constant'
 import initialState from './initialState'
 

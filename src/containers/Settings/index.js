@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -22,15 +22,15 @@ function mapDispatchToProps(dispatch) {
     null,
     mapDispatchToProps
 )
-export class SettingsContainer extends Component {
+class SettingsContainer extends Component {
     render() {
         return (
-            <Fragment>
+            <>
                 <Settings.Containers.Settings
                     ConstructModels={ConstructMjmlModels}
                     actions={this.props.actions}
                 />
-            </Fragment>
+            </>
         )
     }
 }

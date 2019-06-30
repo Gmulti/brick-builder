@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import ComponentsMjml from '../CreateMjml'
@@ -11,7 +11,7 @@ export class AddComponentsOnColumn extends Component {
         const { column } = this.props
 
         return (
-            <Fragment>
+            <>
                 <EditorToggle>
                     <EditorInserter>
                         {DND.Helpers.createDNDComponents(
@@ -24,7 +24,7 @@ export class AddComponentsOnColumn extends Component {
                         )}
                     </EditorInserter>
                 </EditorToggle>
-            </Fragment>
+            </>
         )
     }
 }

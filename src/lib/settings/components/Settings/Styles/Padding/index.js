@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined, each } from 'lodash'
 import styled from 'styled-components'
 
 const SCCells = styled.div`
@@ -90,21 +90,21 @@ class Padding extends Component {
             }
         }
 
-        if (_.isUndefined(_newComponent.attributes[e.target.name].type)) {
+        if (isUndefined(_newComponent.attributes[e.target.name].type)) {
             _newComponent.attributes[e.target.name].type = 'px'
         }
 
         // Section
         if (
-            _.isUndefined(component.keySection) &&
-            _.isUndefined(component.keyColumn)
+            isUndefined(component.keySection) &&
+            isUndefined(component.keyColumn)
         ) {
             actions.updateSection(_newComponent)
             return
         }
 
         // Column
-        if (_.isUndefined(component.keyColumn)) {
+        if (isUndefined(component.keyColumn)) {
             actions.updateColumn(_newComponent)
             return
         }
@@ -144,7 +144,7 @@ class Padding extends Component {
 
         let _paddingsView = []
 
-        _.each(_paddings, (obj, key) => {
+        each(_paddings, (obj, key) => {
             _paddingsView.push(
                 <SCCell key={key}>
                     <SCInputDefault

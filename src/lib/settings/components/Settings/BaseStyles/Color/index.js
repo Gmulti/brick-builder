@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import * as _ from 'lodash'
-
 import InputColor from '../../../../../../ui/Settings/InputColor'
 import Field from '../../../../../../ui/Settings/Field'
 

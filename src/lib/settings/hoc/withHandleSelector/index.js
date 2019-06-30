@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import * as _ from 'lodash'
+import { isFunction, isArray, isString, isUndefined } from 'lodash'
 
 export const withHandleSelector = ComposedComponent => {
     return ComposedComponent =>
@@ -7,7 +7,7 @@ export const withHandleSelector = ComposedComponent => {
             getStyleKey = () => {
                 const { styleKey } = this.props
 
-                if (!_.isUndefined(styleKey)) {
+                if (!isUndefined(styleKey)) {
                     return styleKey
                 }
 
@@ -17,7 +17,7 @@ export const withHandleSelector = ComposedComponent => {
             getStyleKeyJS = () => {
                 const { styleKeyJS } = this.props
 
-                if (!_.isUndefined(styleKeyJS)) {
+                if (!isUndefined(styleKeyJS)) {
                     return styleKeyJS
                 }
 
@@ -27,32 +27,27 @@ export const withHandleSelector = ComposedComponent => {
             constructSelector = () => {
                 const { component, handleChangeSelector } = this.props
 
-                if (_.isUndefined(handleChangeSelector)) {
+                if (isUndefined(handleChangeSelector)) {
                     // Default selector, only with index
                     this.selector = document.querySelector(
                         `#${component.getIndex()}`
                     )
-                } else if (_.isString(handleChangeSelector)) {
+                } else if (isString(handleChangeSelector)) {
                     // Improve selector with a string
                     this.selector = document.querySelector(
                         `#${component.getIndex()} ${handleChangeSelector}`
                     )
-                } else if (_.isFunction(handleChangeSelector)) {
+                } else if (isFunction(handleChangeSelector)) {
                     // Personalize your selector with a callback
                     this.selector = handleChangeSelector(component.getIndex())
                 }
             }
 
             _updateValueSelector = value => {
-                const {
-                    handleChangeSelector,
-                    handleChangeSelectorActive = true,
-                    selector,
-                    component
-                } = this.props
+                const { handleChangeSelectorActive = true } = this.props
 
                 if (handleChangeSelectorActive) {
-                    if (_.isArray(this.selector)) {
+                    if (isArray(this.selector)) {
                         this.selector.forEach(obj => {
                             obj.style[this.getStyleKeyJS()] = value
                         })

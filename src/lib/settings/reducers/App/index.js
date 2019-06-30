@@ -1,21 +1,14 @@
-import * as _ from "lodash"
-
 import initialState from './initialState'
-import * as CONSTANT from "./actions/constant"
+import * as CONSTANT from './actions/constant'
 
-
-function app(
-    state = initialState,
-    { payload, type}
-) {
-
+function app(state = initialState, { payload, type }) {
     switch (type) {
         case CONSTANT.CHANGE_ACTIVE_TABS:
             return {
                 ...state,
                 tabActive: payload
-            } 
-        case CONSTANT.CHANGE_COMPONENT_SETTINGS: 
+            }
+        case CONSTANT.CHANGE_COMPONENT_SETTINGS:
             return {
                 ...state,
                 componentSettings: payload

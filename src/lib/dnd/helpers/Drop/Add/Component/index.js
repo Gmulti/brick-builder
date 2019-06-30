@@ -7,7 +7,6 @@ export default function preparePayloadComponent(
     component,
     from = null
 ) {
-    const itemMonitor = monitor.getItem()
     const afterOrBefore = getAfterOrBefore(monitor, component)
 
     let payload = {

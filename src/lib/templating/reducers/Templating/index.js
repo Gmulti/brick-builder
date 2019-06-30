@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { filter, each, concat, isEmpty, map, merge } from 'lodash'
 import * as CONSTANT from './actions/constant'
 import { DND } from '../../../' // TODO : Improve this on create component / section / column
 
@@ -9,7 +9,7 @@ const duplicateSection = (payload, state) => {
     const columns =
         state.columns && state.columns.length > 0 ? state.columns : []
 
-    const _columnsInSection = _.filter(
+    const _columnsInSection = filter(
         columns,
         obj => obj.keySection === payload.key
     )
@@ -17,7 +17,7 @@ const duplicateSection = (payload, state) => {
     let _duplicateColumns = []
     let _duplicateComponents = []
 
-    if (_.isEmpty(_columnsInSection)) {
+    if (isEmpty(_columnsInSection)) {
         // No columns
         return {
             section: _duplicateSection,
@@ -26,14 +26,11 @@ const duplicateSection = (payload, state) => {
         }
     }
 
-    _.each(_columnsInSection, column => {
+    each(_columnsInSection, column => {
         let results = duplicateColumn(_duplicateSection.key, column, state)
 
         _duplicateColumns.push(results.column)
-        _duplicateComponents = _.concat(
-            _duplicateComponents,
-            results.components
-        )
+        _duplicateComponents = concat(_duplicateComponents, results.components)
     })
 
     return {
@@ -50,7 +47,7 @@ const duplicateColumn = (keySection, payload, state) => {
         state.components && state.components.length > 0 ? state.components : []
 
     // Duplicate components in columns in section
-    const _componentsInColumnInSection = _.filter(
+    const _componentsInColumnInSection = filter(
         components,
         obj =>
             obj.keySection === payload.keySection &&
@@ -59,12 +56,12 @@ const duplicateColumn = (keySection, payload, state) => {
 
     let _duplicateComponents = []
 
-    if (_.isEmpty(_componentsInColumnInSection)) {
+    if (isEmpty(_componentsInColumnInSection)) {
         // No components
         return { column: _duplicateColumn, components: _duplicateComponents }
     }
 
-    _.each(_componentsInColumnInSection, component => {
+    each(_componentsInColumnInSection, component => {
         _duplicateComponents.push(
             duplicateComponent(keySection, _duplicateColumn.key, component)
         )
@@ -85,7 +82,7 @@ function TemplatingReducer(state, { type, payload }) {
         case CONSTANT.DELETE_COMPONENT:
             return {
                 ...state,
-                components: _.filter(
+                components: filter(
                     state.components,
                     obj => obj.key !== payload.key
                 )
@@ -93,15 +90,12 @@ function TemplatingReducer(state, { type, payload }) {
         case CONSTANT.DELETE_SECTION:
             return {
                 ...state,
-                sections: _.filter(
-                    state.sections,
-                    obj => obj.key !== payload.key
-                )
+                sections: filter(state.sections, obj => obj.key !== payload.key)
             }
         case CONSTANT.DELETE_COLUMN:
             return {
                 ...state,
-                columns: _.filter(state.columns, obj => obj.key !== payload.key)
+                columns: filter(state.columns, obj => obj.key !== payload.key)
             }
         case CONSTANT.DUPLICATE_SECTION:
             results = duplicateSection(payload, state)
@@ -115,8 +109,8 @@ function TemplatingReducer(state, { type, payload }) {
             return {
                 ...state,
                 sections: sections,
-                columns: _.concat(state.columns, results.columns),
-                components: _.concat(state.components, results.components)
+                columns: concat(state.columns, results.columns),
+                components: concat(state.components, results.components)
             }
 
         case CONSTANT.DUPLICATE_COLUMN:
@@ -130,7 +124,7 @@ function TemplatingReducer(state, { type, payload }) {
             return {
                 ...state,
                 columns: columns,
-                components: _.concat(state.components, results.components)
+                components: concat(state.components, results.components)
             }
         case CONSTANT.DUPLICATE_COMPONENT:
             const components =
@@ -158,35 +152,31 @@ function TemplatingReducer(state, { type, payload }) {
         case CONSTANT.UPDATE_SECTION:
             return {
                 ...state,
-                sections: _.map(
-                    state.sections,
-                    section =>
-                        section.key !== payload.key
-                            ? section
-                            : _.merge(section, payload)
+                sections: map(state.sections, section =>
+                    section.key !== payload.key
+                        ? section
+                        : merge(section, payload)
                 )
             }
         case CONSTANT.UPDATE_COLUMN:
             return {
                 ...state,
-                columns: _.map(
-                    state.columns,
-                    column =>
-                        column.key !== payload.key ||
-                        column.keySection !== payload.keySection
-                            ? column
-                            : _.merge(column, payload)
+                columns: map(state.columns, column =>
+                    column.key !== payload.key ||
+                    column.keySection !== payload.keySection
+                        ? column
+                        : merge(column, payload)
                 )
             }
         case CONSTANT.UPDATE_COMPONENT:
             return {
                 ...state,
-                components: _.map(state.components, component => {
+                components: map(state.components, component => {
                     return component.key !== payload.key ||
                         component.keySection !== payload.keySection ||
                         component.keyColumn !== payload.keyColumn
                         ? component
-                        : _.merge(component, payload)
+                        : merge(component, payload)
                 })
             }
         default:

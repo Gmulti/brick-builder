@@ -109,7 +109,7 @@ function collectDrop(connect, monitor) {
 )
 @DropTarget([MOVE_COMPONENT, ADD_COMPONENT], cardDrop, collectDrop)
 @dropHover()
-export class DropComponent extends Component {
+class DropComponent extends Component {
     render() {
         const {
             connectDropTarget,

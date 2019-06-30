@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { BlockPicker, SketchPicker } from 'react-color'
 import reactCSS from 'reactcss'
@@ -148,7 +148,7 @@ class ColorSelector extends Component {
         }
 
         return (
-            <Fragment>
+            <>
                 <SCColor
                     id={this.getIndex()}
                     style={stylesDynamic.color}
@@ -160,7 +160,7 @@ class ColorSelector extends Component {
                         {_picker}
                     </SCPopover>
                 ) : null}
-            </Fragment>
+            </>
         )
     }
 }

@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import React, { Component } from 'react'
+import { find, isEmpty } from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as FA from '@fortawesome/fontawesome-free-solid'
 import styled from 'styled-components'
@@ -78,7 +77,7 @@ class ButtonGroup extends Component {
 
         return (
             <SCLineSetting>
-                {!_.isEmpty(title) && <Title title={title} />}
+                {!isEmpty(title) && <Title title={title} />}
                 <SCGroupBtn>
                     {buttons.map((btn, key) => {
                         return (
@@ -92,7 +91,7 @@ class ButtonGroup extends Component {
                                 />
                                 <SCGroupLabel htmlFor={btn.key}>
                                     <FontAwesomeIcon
-                                        icon={_.find(FA, {
+                                        icon={find(FA, {
                                             iconName: btn.nameIcon
                                         })}
                                     />

@@ -1,8 +1,7 @@
-import * as _ from 'lodash'
-
+import { assignIn, find } from 'lodash'
 
 export default function ConstructModels(models, component) {
-    let ModelChoice = _.find(models, { type: component.type })
+    let ModelChoice = find(models, { type: component.type })
 
-    return _.assignIn(new ModelChoice.model(), component)
+    return assignIn(new ModelChoice.model(), component)
 }

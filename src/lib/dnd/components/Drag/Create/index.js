@@ -20,7 +20,7 @@ function collectDrag(connect, monitor) {
 }
 
 @DragSource(ADD_COMPONENT, cardDrag, collectDrag)
-export class DragComponent extends Component {
+class DragComponent extends Component {
     render() {
         const { connectDragSource } = this.props
 

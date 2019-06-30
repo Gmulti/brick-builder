@@ -122,7 +122,7 @@ function collectDrop(connect, monitor) {
 )
 @DropTarget([MOVE_SECTION, ADD_SECTION], cardDrop, collectDrop)
 @dropHover()
-export class DropSection extends Component {
+class DropSection extends Component {
     render() {
         const { connectDropTarget, children, getStylesHover } = this.props
 

@@ -1,6 +1,5 @@
-import * as _ from 'lodash'
+import { isNull } from 'lodash'
 import {
-    WIDTH,
     GROUP_NAME,
     PADDING,
     BACKGROUND_COLOR,
@@ -8,11 +7,9 @@ import {
 } from '../../../../lib/settings/components/Settings'
 import {
     HANDLE_VALUE,
-    HANDLE_TYPE_OBJECT,
     HANDLE_IMAGE
 } from '../../../../lib/settings/constants/Handle'
 import {
-    TYPE_OBJECT,
     TYPE_OBJECT_RANGE,
     VALUE
 } from '../../../../lib/settings/constants/BaseStyles'
@@ -20,7 +17,7 @@ import {
 const selectorImg = index => {
     let selectorImg = document.querySelector(`#${index} a`)
 
-    if (_.isNull(selectorImg)) {
+    if (isNull(selectorImg)) {
         selectorImg = document.querySelector(`#${index} img`)
     }
 
@@ -48,7 +45,7 @@ export default [
             handleChangeSelector: selectorImg,
             widthSelector: index => {
                 const img = selectorImg(index)
-                if (_.isNull(img)) {
+                if (isNull(img)) {
                     return null
                 }
 
@@ -130,7 +127,7 @@ export default [
             styleKey: 'container-background-color',
             handleChangeSelector: index => {
                 const img = selectorImg(index)
-                if (_.isNull(img)) {
+                if (isNull(img)) {
                     return null
                 }
 

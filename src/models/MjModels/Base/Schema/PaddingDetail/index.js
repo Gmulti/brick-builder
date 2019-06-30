@@ -1,12 +1,11 @@
-import * as _ from "lodash"
-import { Helpers } from "../../../../../lib";
-
+import { each, isUndefined } from 'lodash'
+import { Helpers } from '../../../../../lib'
 
 let schemaPaddings = {}
 
-_.each(["top", "bottom", "left", "right"], (direction) => {
-    schemaPaddings[`padding-${direction}`] = (obj) => {
-        if (_.isUndefined(obj[`padding-${direction}`])) {
+each(['top', 'bottom', 'left', 'right'], direction => {
+    schemaPaddings[`padding-${direction}`] = obj => {
+        if (isUndefined(obj[`padding-${direction}`])) {
             return null
         }
 

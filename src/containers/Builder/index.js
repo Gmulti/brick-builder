@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import Preview from '../Preview'
 import Header from '../Header'
 import Settings from '../Settings'
@@ -23,7 +23,7 @@ const SCLayoutPreview = styled.div`
 class Builder extends Component {
     render() {
         return (
-            <Fragment>
+            <>
                 <Header />
                 <SCLayout>
                     <SCLayoutPreview>
@@ -63,7 +63,7 @@ class Builder extends Component {
                         }
                     `}
                 </style>
-            </Fragment>
+            </>
         )
     }
 }

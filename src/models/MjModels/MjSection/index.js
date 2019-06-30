@@ -1,6 +1,5 @@
-import * as _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import Schema from './Schema'
-import Morphism from 'morphism'
 import BaseMj from '../Base'
 import DEFAULT_ATTRIBUTES from './DefaultAttributes'
 
@@ -12,7 +11,7 @@ export default class MjSection extends BaseMj {
 
     tagName = 'mj-section'
 
-    defaultAttributes = _.cloneDeep(DEFAULT_ATTRIBUTES)
+    defaultAttributes = cloneDeep(DEFAULT_ATTRIBUTES)
 
     schema = Schema
 

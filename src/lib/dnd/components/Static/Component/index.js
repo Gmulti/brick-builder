@@ -22,7 +22,7 @@ function mapDispatchToProps(dispatch) {
     null,
     mapDispatchToProps
 )
-export class StaticComponent extends Component {
+class StaticComponent extends Component {
     _handleClickAddComponent = () => {
         const { keySection, keyColumn, params, actions } = this.props
 

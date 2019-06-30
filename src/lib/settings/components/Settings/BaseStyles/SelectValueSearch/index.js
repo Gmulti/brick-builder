@@ -1,9 +1,7 @@
-import React, { Component, Fragment } from 'react'
-import * as _ from 'lodash'
+import React, { Component } from 'react'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
 
-import Title from '../../Title'
 import Field from '../../../../../../ui/Settings/Field'
 
 class SelectValueSearch extends Component {

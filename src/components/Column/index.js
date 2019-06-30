@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { assignIn, chain, isEmpty, isUndefined } from 'lodash'
 import { connect } from 'react-redux'
@@ -6,8 +6,6 @@ import styled from 'styled-components'
 
 import MjColumn from '../../models/MjModels/MjColumn'
 import ConstructPreviewComponent from '../../factory/ConstructPreviewComponent'
-import { Templating, Settings, DND } from '../../lib'
-import OptionsPreview from '../OptionsPreview'
 import EmptyColumn from '../../lib/dnd/components/Drop/EmptyColumn'
 import Empty from './Empty'
 
@@ -58,7 +56,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 @connect(mapStateToProps)
-export class Column extends Component {
+class Column extends Component {
     render() {
         const { column, components, keySection } = this.props
 

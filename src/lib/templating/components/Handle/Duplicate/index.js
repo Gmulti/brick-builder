@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
     null,
     mapDispatchToProps
 )
-export class HandleDuplicate extends Component {
+class HandleDuplicate extends Component {
     _handleClick = e => {
         const { actions, component } = this.props
 

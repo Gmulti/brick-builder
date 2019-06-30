@@ -1,9 +1,5 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import React, { Component } from 'react'
 
-import UnitValueCss from '../../UnitValueCss'
-import Title from '../../Title'
 import Range from '../../../../../../ui/Settings/Range'
 import Text from '../../../../../../ui/svg/text'
 import Field from '../../../../../../ui/Settings/Field'
@@ -11,14 +7,14 @@ import Field from '../../../../../../ui/Settings/Field'
 class TypeObjectRange extends Component {
     render() {
         const {
-            unitValueReadOnly,
-            title = '',
-            typeObject,
-            handleChange,
-            handleChangeType,
-            minInput = 0,
-            maxInput = null,
-            typeAvailables = ['px', '%']
+            // unitValueReadOnly,
+            title = ''
+            // typeObject,
+            // handleChange,
+            // handleChangeType,
+            // minInput = 0,
+            // maxInput = null,
+            // typeAvailables = ['px', '%']
         } = this.props
 
         return (

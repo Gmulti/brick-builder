@@ -23,7 +23,7 @@ function mapDispatchToProps(dispatch) {
     null,
     mapDispatchToProps
 )
-export class ButtonSettings extends Component {
+class ButtonSettings extends Component {
     _handleClick = e => {
         const { actions, component } = this.props
 

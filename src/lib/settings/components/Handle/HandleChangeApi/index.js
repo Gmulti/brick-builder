@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as _ from 'lodash'
+import { debounce, assignIn, isEmpty } from 'lodash'
 import { fetchSelectOptionsApi } from '../../../../../reducers/App/actions/fetchSelectOptionsApi' // TODO : too dependency
 import { updateValueSelectedApi } from '../../../../../reducers/App/actions/updateValueSelectedApi' // TODO : too dependency
 
@@ -22,15 +22,18 @@ const mapStateToProps = ({ App: { valueSelectedApi, searchApiOptions } }) => {
     return { options: searchApiOptions, valueSelected: valueSelectedApi }
 }
 
-@connect(mapStateToProps, mapDispatchToProps)
+@connect(
+    mapStateToProps,
+    mapDispatchToProps
+)
 class HandleChangeApi extends Component {
     constructor(props) {
         super(props)
 
-        this._handleDebounceSearchOption = _.debounce(
+        this._handleDebounceSearchOption = debounce(
             value =>
                 props.actions.fetchSelectOptionsApi(
-                    _.assignIn(props.component, { searchValue: value })
+                    assignIn(props.component, { searchValue: value })
                 ),
             300,
             { leading: false, trailing: true }
@@ -38,7 +41,7 @@ class HandleChangeApi extends Component {
     }
 
     _handleInputChange = value => {
-        if (!_.isEmpty(value)) {
+        if (!isEmpty(value)) {
             this._handleDebounceSearchOption(value)
         }
 
@@ -66,7 +69,7 @@ class HandleChangeApi extends Component {
             React.cloneElement(child, this.getChildProps())
         )
 
-        return <Fragment>{childrenWithProps}</Fragment>
+        return <>{childrenWithProps}</>
     }
 }
 

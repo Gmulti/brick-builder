@@ -1,17 +1,14 @@
-import React, { Component, Fragment } from "react"
-import * as _ from "lodash"
+import React, { Component } from 'react'
 
-import TypeObject from "../../BaseStyles/TypeObject"
-import HandleChangeWithType from "../../../Handle/HandleChangeWithType";
+import TypeObject from '../../BaseStyles/TypeObject'
+import HandleChangeWithType from '../../../Handle/HandleChangeWithType'
 
 class BorderWidth extends Component {
+    styleKey = 'border-width'
 
-    styleKey = "border-width"
-
-    title = "Border Width"
+    title = 'Border Width'
 
     render() {
-
         return (
             <HandleChangeWithType
                 title={this.title}
@@ -22,7 +19,6 @@ class BorderWidth extends Component {
             </HandleChangeWithType>
         )
     }
-
 }
 
 export default BorderWidth

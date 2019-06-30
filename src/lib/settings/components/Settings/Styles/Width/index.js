@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react'
-import * as _ from 'lodash'
+import React, { Component } from 'react'
 
 import HandleChangeWithType from '../../../Handle/HandleChangeWithType'
 import TypeObject from '../../BaseStyles/TypeObject'

@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined } from 'lodash'
 import styled from 'styled-components'
 
 import UnitValueCss from '../../UnitValueCss'
-import Title from '../../Title'
 import Field from '../../../../../../ui/Settings/Field'
 import Input from '../../../../../../ui/Settings/Input'
 
@@ -43,17 +42,16 @@ class TypeObject extends Component {
                     minInput={minInput}
                     type="number"
                 />
-                {(_.isUndefined(unitValueReadOnly) || !unitValueReadOnly) && (
+                {(isUndefined(unitValueReadOnly) || !unitValueReadOnly) && (
                     <UnitValueCss
                         value={typeObject.type}
                         valuesAvailable={typeAvailables}
                         handleChange={handleChangeType}
                     />
                 )}
-                {!_.isUndefined(unitValueReadOnly) &&
-                    unitValueReadOnly && (
-                        <SCInputSuffix>{typeObject.type}</SCInputSuffix>
-                    )}
+                {!isUndefined(unitValueReadOnly) && unitValueReadOnly && (
+                    <SCInputSuffix>{typeObject.type}</SCInputSuffix>
+                )}
             </Field>
         )
     }

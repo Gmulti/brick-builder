@@ -1,5 +1,4 @@
 import { DND, Templating } from '../../lib'
-import * as _ from 'lodash'
 
 import initialState from './initialState'
 
@@ -17,6 +16,7 @@ function templating(state = initialState, { type, payload }) {
                 type,
                 payload
             })
+            break
     }
 
     return _state

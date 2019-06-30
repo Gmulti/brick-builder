@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { isUndefined } from 'lodash'
 import Morphism from 'morphism'
 
 import { Helpers } from '../../../../lib'
@@ -8,7 +8,7 @@ const schemaStyle = {}
 
 const schemaAttributes = {
     height: obj => {
-        if (_.isUndefined(obj.height)) {
+        if (isUndefined(obj.height)) {
             return Helpers.transformTypeObject(DEFAULT_ATTRIBUTES.height)
         }
 

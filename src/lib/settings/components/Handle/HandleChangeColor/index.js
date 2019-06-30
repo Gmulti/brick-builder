@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import * as _ from 'lodash'
-import ColorSelector from '../../Settings/ColorSelector'
+import { isArray, each } from 'lodash'
 import { withHandleSelector } from '../../../hoc/withHandleSelector'
 import handleUpdate from '../handleUpdate'
 
@@ -18,9 +17,9 @@ class HandleChangeColor extends Component {
 
         let _newComponent = component
 
-        if (_.isArray(_styleKey)) {
+        if (isArray(_styleKey)) {
             // Like styleKey MjSocial
-            _.each(_styleKey, setAttribute(_newComponent, color))
+            each(_styleKey, setAttribute(_newComponent, color))
         } else {
             setAttribute(_newComponent, color)(_styleKey)
         }
@@ -49,7 +48,7 @@ class HandleChangeColor extends Component {
             React.cloneElement(child, this.getChildProps())
         )
 
-        return <Fragment>{childrenWithProps}</Fragment>
+        return <>{childrenWithProps}</>
     }
 }
 

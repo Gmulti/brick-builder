@@ -1,6 +1,5 @@
-import * as _ from 'lodash'
+import { assignIn, isUndefined } from 'lodash'
 import * as CONSTANT_SETTINGS from '../../lib/settings/reducers/App/actions/constant'
-import { mergeMap, filter } from 'rxjs'
 import { ajax } from 'rxjs/observable/dom/ajax'
 import { Observable } from 'rxjs'
 
@@ -20,12 +19,12 @@ const ajaxDefault = {
 }
 
 const serachOptions = ({ payload }) => {
-    const ajaxParams = !_.isUndefined(payload.ajaxParams)
+    const ajaxParams = !isUndefined(payload.ajaxParams)
         ? payload.ajaxParams
         : {}
 
     const url = Helpers.buildUrl(payload.handleSelectSearch, {
-        queryParams: _.assignIn(
+        queryParams: assignIn(
             {
                 search: payload.searchValue || ''
             },
@@ -33,7 +32,7 @@ const serachOptions = ({ payload }) => {
         )
     })
 
-    return ajax(_.assignIn(ajaxDefault, { url: url }, ajaxParams)).map(
+    return ajax(assignIn(ajaxDefault, { url: url }, ajaxParams)).map(
         response => {
             return updateSelectOptionsApi(response)
         }
@@ -60,12 +59,12 @@ export const addComponentApi = action$ => {
     return action$
         .ofType(CONSTANT_APP.FETCH_ADD_COMPONENT_API)
         .mergeMap(({ payload }) => {
-            const ajaxParams = !_.isUndefined(payload.ajaxParams)
+            const ajaxParams = !isUndefined(payload.ajaxParams)
                 ? payload.ajaxParams
                 : {}
 
             const url = Helpers.buildUrl(payload.handleSelectAdd, {
-                queryParams: _.assignIn(
+                queryParams: assignIn(
                     {
                         search: payload.searchValue || ''
                     },
@@ -74,7 +73,7 @@ export const addComponentApi = action$ => {
             })
             const actions = new DND.Reducers.TemplatingActions()
 
-            return ajax(_.assignIn(ajaxDefault, { url: url }, ajaxParams)).map(
+            return ajax(assignIn(ajaxDefault, { url: url }, ajaxParams)).map(
                 res => {
                     return actions.addComponentsFromApi({
                         component: payload,

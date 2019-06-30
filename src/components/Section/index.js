@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { chain, assignIn, isEmpty, isUndefined } from 'lodash'
 import { connect } from 'react-redux'
@@ -55,7 +55,7 @@ function collectDrag(connect, monitor) {
 
 @connect(mapStateToProps)
 @DragSource(DND.Constants.MOVE_SECTION, cardDrag, collectDrag)
-export class Section extends Component {
+class Section extends Component {
     render() {
         const {
             section,
@@ -88,7 +88,7 @@ export class Section extends Component {
         }
 
         return (
-            <Fragment>
+            <>
                 <DND.Components.Drop.Section section={section}>
                     {connectDragPreview(
                         <div>
@@ -145,7 +145,7 @@ export class Section extends Component {
                         </div>
                     )}
                 </DND.Components.Drop.Section>
-            </Fragment>
+            </>
         )
     }
 }

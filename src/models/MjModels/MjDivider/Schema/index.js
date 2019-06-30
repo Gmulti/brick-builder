@@ -1,8 +1,5 @@
-import * as _ from 'lodash'
+import { cloneDeep, assignIn } from 'lodash'
 import Morphism from 'morphism'
-
-import DEFAULT_ATTRIBUTES from '../DefaultAttributes'
-import { Helpers } from '../../../../lib'
 
 import PaddingDetailSchema from '../../Base/Schema/PaddingDetail'
 import BorderDetailSchema from '../../Base/Schema/BorderDetail'
@@ -11,11 +8,11 @@ import ContainerBackgroundColorSchema from '../../Base/Schema/ContainerBackgroun
 
 const schemaStyle = {}
 
-const schemaAttributes = _.assignIn(
-    _.cloneDeep(PaddingDetailSchema),
-    _.cloneDeep(BorderDetailSchema),
-    _.cloneDeep(WidthSchema),
-    _.cloneDeep(ContainerBackgroundColorSchema)
+const schemaAttributes = assignIn(
+    cloneDeep(PaddingDetailSchema),
+    cloneDeep(BorderDetailSchema),
+    cloneDeep(WidthSchema),
+    cloneDeep(ContainerBackgroundColorSchema)
 )
 
 const mjmlObject = {

@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { assignIn, isUndefined, map } from 'lodash'
 import Morphism from 'morphism'
 
 import transformMjComponent from '../../../../helpers/transformStructureToMjml/transformMjComponent'
@@ -8,14 +8,14 @@ import WidthSchema from '../../Base/Schema/Width'
 
 const schemaStyle = {
     backgroundColor: obj => {
-        if (_.isUndefined(obj['background-color'])) {
+        if (isUndefined(obj['background-color'])) {
             return null
         }
 
         return Helpers.transformColorSelector(obj['background-color'])
     },
     width: obj => {
-        if (_.isUndefined(obj.width)) {
+        if (isUndefined(obj.width)) {
             return Helpers.transformTypeObject(DEFAULT_ATTRIBUTES.width)
         }
 
@@ -23,9 +23,9 @@ const schemaStyle = {
     }
 }
 
-const schemaAttributes = _.assignIn(WidthSchema, {
+const schemaAttributes = assignIn(WidthSchema, {
     'border-radius': obj => {
-        if (_.isUndefined(obj['border-radius'])) {
+        if (isUndefined(obj['border-radius'])) {
             return Helpers.transformTypeObject(
                 DEFAULT_ATTRIBUTES['border-radius']
             )
@@ -34,14 +34,14 @@ const schemaAttributes = _.assignIn(WidthSchema, {
         return Helpers.transformTypeObject(obj['border-radius'])
     },
     'background-color': obj => {
-        if (_.isUndefined(obj['background-color'])) {
+        if (isUndefined(obj['background-color'])) {
             return null
         }
 
         return Helpers.transformColorSelector(obj['background-color'])
     },
     'vertical-align': obj => {
-        if (_.isUndefined(obj['vertical-align'])) {
+        if (isUndefined(obj['vertical-align'])) {
             return DEFAULT_ATTRIBUTES['vertical-align']
         }
 
@@ -61,7 +61,7 @@ const mjmlObject = {
     },
     children: {
         path: 'components',
-        fn: items => _.map(items, obj => transformMjComponent(obj))
+        fn: items => map(items, obj => transformMjComponent(obj))
     }
 }
 

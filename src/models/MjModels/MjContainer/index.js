@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { cloneDeep } from 'lodash'
 import BaseMj from '../Base'
 import DEFAULT_ATTRIBUTES from './DefaultAttributes'
 import Schema from './Schema'
@@ -8,7 +8,7 @@ import Container from '../../../lib/components/models/Container'
 export default class MjContainer extends BaseMj {
     static type = Container.type
 
-    defaultAttributes = _.cloneDeep(DEFAULT_ATTRIBUTES)
+    defaultAttributes = cloneDeep(DEFAULT_ATTRIBUTES)
 
     tagName = 'mj-container'
 

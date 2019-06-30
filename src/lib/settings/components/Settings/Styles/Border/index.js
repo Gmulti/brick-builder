@@ -1,26 +1,18 @@
-import React, { Component, Fragment } from "react"
-import PropTypes from "prop-types"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import BorderColor from "../BorderColor";
-import BorderStyle from "../BorderStyle";
-import BorderWidth from "../BorderWidth";
+import BorderColor from '../BorderColor'
+import BorderStyle from '../BorderStyle'
+import BorderWidth from '../BorderWidth'
 
 class Border extends Component {
-
     render() {
-
         return (
-            <Fragment>
-                <BorderWidth 
-                    {...this.props} 
-                />
-                <BorderStyle 
-                    {...this.props} 
-                />
-                <BorderColor 
-                    {...this.props} 
-                />
-            </Fragment>
+            <>
+                <BorderWidth {...this.props} />
+                <BorderStyle {...this.props} />
+                <BorderColor {...this.props} />
+            </>
         )
     }
 }

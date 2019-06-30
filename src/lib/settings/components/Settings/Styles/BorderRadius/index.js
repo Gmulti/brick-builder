@@ -1,14 +1,12 @@
-import React, { Component, Fragment } from "react"
-import * as _ from "lodash"
+import React, { Component } from 'react'
 
-import HandleChangeWithType from "../../../Handle/HandleChangeWithType"
-import TypeObject from "../../BaseStyles/TypeObject"
+import HandleChangeWithType from '../../../Handle/HandleChangeWithType'
+import TypeObject from '../../BaseStyles/TypeObject'
 
 class BorderRadius extends Component {
+    styleKey = 'border-radius'
 
-    styleKey = "border-radius"
-
-    title = "Border radius"
+    title = 'Border radius'
 
     render() {
         return (
@@ -21,7 +19,6 @@ class BorderRadius extends Component {
             </HandleChangeWithType>
         )
     }
-
 }
 
 export default BorderRadius

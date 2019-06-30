@@ -1,5 +1,5 @@
 import Morphism from 'morphism'
-import * as _ from 'lodash'
+import { each, cloneDeep, isUndefined, assignIn } from 'lodash'
 
 import { Helpers } from '../../../../lib'
 import DEFAULT_ATTRIBUTES from '../DefaultAttributes'
@@ -9,10 +9,10 @@ import PaddingDetailSchema from '../../Base/Schema/PaddingDetail'
 
 let schemaPaddings = {}
 
-_.each(['Top', 'Bottom', 'Left', 'Right'], direction => {
+each(['Top', 'Bottom', 'Left', 'Right'], direction => {
     schemaPaddings[`padding${direction}`] = obj => {
         const _name = direction.toLowerCase()
-        if (_.isUndefined(obj[`padding-${_name}`])) {
+        if (isUndefined(obj[`padding-${_name}`])) {
             return Helpers.transformTypeObject(
                 DEFAULT_ATTRIBUTES[`padding-${_name}`]
             )
@@ -21,9 +21,9 @@ _.each(['Top', 'Bottom', 'Left', 'Right'], direction => {
     }
 })
 
-const schemaStyle = _.assignIn(schemaPaddings, {
+const schemaStyle = assignIn(schemaPaddings, {
     backgroundColor: obj => {
-        if (_.isUndefined(obj['background-color'])) {
+        if (isUndefined(obj['background-color'])) {
             return null
         }
 
@@ -31,16 +31,16 @@ const schemaStyle = _.assignIn(schemaPaddings, {
     }
 })
 
-const schemaAttributes = _.assignIn(_.cloneDeep(PaddingDetailSchema), {
+const schemaAttributes = assignIn(cloneDeep(PaddingDetailSchema), {
     'background-color': obj => {
-        if (_.isUndefined(obj['background-color'])) {
+        if (isUndefined(obj['background-color'])) {
             return null
         }
 
         return Helpers.transformColorSelector(obj['background-color'])
     },
     'full-width': obj => {
-        if (_.isUndefined(obj['full-width'])) {
+        if (isUndefined(obj['full-width'])) {
             return null
         }
 

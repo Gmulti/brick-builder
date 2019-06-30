@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { assign } from 'lodash'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -27,15 +27,15 @@ const mapDispatchToProps = dispatch => {
     mapStateToProps,
     mapDispatchToProps
 )
-export class General extends Component {
+class General extends Component {
     render() {
         const { container, actions } = this.props
         return (
-            <Fragment>
+            <>
                 {ConstructSettingsComponent(container, {
                     actions: actions
                 })}
-            </Fragment>
+            </>
         )
     }
 }

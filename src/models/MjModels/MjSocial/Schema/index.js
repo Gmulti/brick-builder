@@ -1,4 +1,4 @@
-import * as _ from 'lodash'
+import { cloneDeep, isUndefined, assignIn } from 'lodash'
 import Morphism from 'morphism'
 
 import { Helpers } from '../../../../lib'
@@ -6,7 +6,7 @@ import PaddingDetailSchema from '../../Base/Schema/PaddingDetail'
 import ContainerBackgroundColorSchema from '../../Base/Schema/ContainerBackgroundColor'
 
 function transformColorIcon(obj, key) {
-    if (_.isUndefined(obj[this])) {
+    if (isUndefined(obj[this])) {
         return null
     }
 
@@ -15,9 +15,9 @@ function transformColorIcon(obj, key) {
 
 const schemaStyle = {}
 
-const schemaAttributes = _.assignIn(
-    _.cloneDeep(ContainerBackgroundColorSchema),
-    _.cloneDeep(PaddingDetailSchema),
+const schemaAttributes = assignIn(
+    cloneDeep(ContainerBackgroundColorSchema),
+    cloneDeep(PaddingDetailSchema),
     {
         'facebook-icon-color': transformColorIcon.bind('facebook-icon-color'),
         'twitter-icon-color': transformColorIcon.bind('twitter-icon-color'),

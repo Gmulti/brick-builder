@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as _ from 'lodash'
+import { assignIn } from 'lodash'
 
 import { previewComponent } from '../../../hoc/previewComponent'
 import MjSocialModel from '../../../models/MjModels/MjSocial'
 
 const mapStateToProps = (sate, { component }) => ({
-    component: _.assignIn(new MjSocialModel(), component)
+    component: assignIn(new MjSocialModel(), component)
 })
 
 @connect(mapStateToProps)
 @previewComponent()
-export class MjSocial extends Component {
+class MjSocial extends Component {
     render() {
         const { extractComponentHtml, getHtml, getIndex } = this.props
 

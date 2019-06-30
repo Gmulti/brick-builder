@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import * as _ from 'lodash'
+import { isUndefined, isNull, debounce, isFunction } from 'lodash'
 
 import { Helpers } from '../../../../../lib'
 import { withHandleSelector } from '../../../hoc/withHandleSelector'
@@ -11,7 +11,7 @@ class HandleChangeImage extends Component {
     constructor(props) {
         super(props)
 
-        this._handleChangeThrottle = _.debounce(
+        this._handleChangeThrottle = debounce(
             _newComponent => {
                 handleUpdate(_newComponent, props.actions)
             },
@@ -23,11 +23,11 @@ class HandleChangeImage extends Component {
     getWidthSelector() {
         const { widthSelector, component } = this.props
 
-        if (_.isUndefined(widthSelector)) {
+        if (isUndefined(widthSelector)) {
             throw 'Need setup a widthSelector'
         }
 
-        if (_.isFunction(widthSelector)) {
+        if (isFunction(widthSelector)) {
             return widthSelector(component.getIndex())
         } else {
             throw 'Use a function for setup a widthSelector'
@@ -48,7 +48,7 @@ class HandleChangeImage extends Component {
 
         const _typeObject = component.getAttributes()[getStyleKey()]
         const widthSelector = this.getWidthSelector()
-        if (_.isNull(widthSelector)) {
+        if (isNull(widthSelector)) {
             return
         }
 
@@ -56,14 +56,14 @@ class HandleChangeImage extends Component {
             return
         }
 
-        if (_.isNull(_typeObject) || _.isUndefined(_typeObject)) {
+        if (isNull(_typeObject) || isUndefined(_typeObject)) {
             this.setState({ typeObject: { type: '%', value: 100 } })
             return
         }
 
         const _newTypeObject = {
             value: Math.round(
-                _typeObject.value * 100 / this.getCleanOffsetWidthSelector()
+                (_typeObject.value * 100) / this.getCleanOffsetWidthSelector()
             ),
             type: '%'
         }
@@ -89,8 +89,7 @@ class HandleChangeImage extends Component {
                 [getStyleKey()]: {
                     type: 'px',
                     value: Math.round(
-                        e.target.value *
-                            this.getCleanOffsetWidthSelector() /
+                        (e.target.value * this.getCleanOffsetWidthSelector()) /
                             100
                     )
                 }
@@ -128,7 +127,7 @@ class HandleChangeImage extends Component {
             React.cloneElement(child, this.getChildProps())
         )
 
-        return <Fragment>{childrenWithProps}</Fragment>
+        return <>{childrenWithProps}</>
     }
 }
 

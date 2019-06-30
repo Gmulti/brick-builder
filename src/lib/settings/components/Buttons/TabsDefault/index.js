@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -28,7 +27,7 @@ function mapDispatchToProps(dispatch) {
     mapStateToProps,
     mapDispatchToProps
 )
-export class TabsDefault extends Component {
+class TabsDefault extends Component {
     _handleClick = e => {
         const { actions, tab } = this.props
         actions.changeActiveTabs(tab.key)

@@ -1,19 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as _ from 'lodash'
+import { assignIn } from 'lodash'
 
 import MjButtonModel from '../../../models/MjModels/MjButton'
 import { previewComponent } from '../../../hoc/previewComponent'
 
 const mapStateToProps = (state, { component }) => {
     return {
-        component: _.assignIn(new MjButtonModel(), component)
+        component: assignIn(new MjButtonModel(), component)
     }
 }
 
 @connect(mapStateToProps)
 @previewComponent()
-export class MjButton extends Component {
+class MjButton extends Component {
     render() {
         const { extractComponentHtml, getHtml, getIndex } = this.props
 

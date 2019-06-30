@@ -16,8 +16,11 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-@connect(null, mapDispatchToProps)
-export class ButtonImport extends Component {
+@connect(
+    null,
+    mapDispatchToProps
+)
+class ButtonImport extends Component {
     _handleClick = e => {
         const { actions, component } = this.props
 

@@ -1,5 +1,5 @@
 import { concat } from 'lodash'
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { DND } from '../../../lib'
 import { connect } from 'react-redux'
 import ComponentsMjml from '../../../components/CreateMjml'
@@ -18,12 +18,12 @@ const mapStateToProps = ({ App: { customComponents } }) => ({
 })
 
 @connect(mapStateToProps)
-export class Components extends Component {
+class Components extends Component {
     render() {
         const { customComponents } = this.props
 
         return (
-            <Fragment>
+            <>
                 <SCLayoutListComponents>
                     {DND.Helpers.createDNDComponents(
                         concat(ComponentsMjml, customComponents)
@@ -32,7 +32,7 @@ export class Components extends Component {
                 <SCLayoutListComponents>
                     {DND.Helpers.createDNDComponents(SectionsMjml)}
                 </SCLayoutListComponents>
-            </Fragment>
+            </>
         )
     }
 }

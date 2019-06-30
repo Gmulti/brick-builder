@@ -1,27 +1,21 @@
-import * as _ from 'lodash'
+import { isNull } from 'lodash'
 import {
-    WIDTH,
     GROUP_NAME,
-    PADDING,
-    BACKGROUND_COLOR,
-    TEXT_ALIGN
+    BACKGROUND_COLOR
 } from '../../../../lib/settings/components/Settings'
 import {
     HANDLE_VALUE,
-    HANDLE_TYPE_OBJECT,
-    HANDLE_COLOR
+    HANDLE_TYPE_OBJECT
 } from '../../../../lib/settings/constants/Handle'
 import {
-    TYPE_OBJECT,
     TYPE_OBJECT_RANGE,
-    VALUE,
-    COLOR
+    VALUE
 } from '../../../../lib/settings/constants/BaseStyles'
 
 const selectorBtn = index => {
     let selectorBtn = document.querySelector(`#${index} p`)
 
-    if (_.isNull(selectorBtn)) {
+    if (isNull(selectorBtn)) {
         selectorBtn = document.querySelector(`#${index} a`)
     }
 
@@ -63,7 +57,7 @@ export default [
         attributes: {
             handleChangeSelector: index => {
                 const node = selectorBtn(index)
-                if (_.isNull(node)) {
+                if (isNull(node)) {
                     return null
                 }
 
@@ -102,7 +96,7 @@ export default [
         attributes: {
             handleChangeSelector: index => {
                 const _selector = selectorBtn(index)
-                if (_.isNull(_selector)) {
+                if (isNull(_selector)) {
                     return null
                 }
 

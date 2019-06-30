@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from "prop-types"
-import { DragSource } from 'react-dnd';
-import { MOVE_COLUMN } from "../../../constants"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { DragSource } from 'react-dnd'
+import { MOVE_COLUMN } from '../../../constants'
 
 const cardDrag = {
     beginDrag(props) {
         return {
             keySection: props.keySection,
-            order : props.order,
-            source : MOVE_COLUMN
+            order: props.order,
+            source: MOVE_COLUMN
         }
     }
 }
@@ -22,17 +22,12 @@ function collectDrag(connect, monitor) {
 }
 
 @DragSource(MOVE_COLUMN, cardDrag, collectDrag)
-export class DragColumn extends Component  {
-
+class DragColumn extends Component {
     render() {
-        const { connectDragSource, connectDragPreview } = this.props
+        const { connectDragSource, connectDragPreview } = this.props
 
         return connectDragPreview(
-            connectDragSource(
-                <div>
-                    {this.props.children}
-                </div>
-            )
+            connectDragSource(<div>{this.props.children}</div>)
         )
     }
 }
@@ -43,4 +38,3 @@ DragColumn.propTypes = {
 }
 
 export default DragColumn
-

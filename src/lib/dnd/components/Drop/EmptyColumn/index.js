@@ -95,9 +95,9 @@ function collectDrop(connect, monitor) {
     null,
     mapDispatchToProps
 )
-@DropTarget([ADD_COMPONENT, MOVE_COLUMN, MOVE_COMPONENT], cardDrop, collectDrop)
 @dropHover()
-export class EmptyColumn extends Component {
+@DropTarget([ADD_COMPONENT, MOVE_COLUMN, MOVE_COMPONENT], cardDrop, collectDrop)
+class EmptyColumn extends Component {
     render() {
         const { connectDropTarget, children, getStylesHover } = this.props
 

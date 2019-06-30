@@ -136,7 +136,7 @@ function collectDrop(connect, monitor) {
     collectDrop
 )
 @dropHover()
-export class EmptySection extends Component {
+class EmptySection extends Component {
     render() {
         const { connectDropTarget, children, getStylesHover } = this.props
 

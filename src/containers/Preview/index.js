@@ -6,7 +6,7 @@ import { assignIn, orderBy } from 'lodash'
 import Section from '../../components/Section'
 import MjContainer from '../../models/MjModels/MjContainer'
 
-function mapStateToProps(state, ownProps) {
+const mapStateToProps = state => {
     return {
         container: assignIn(new MjContainer(), state.Templating.container),
         sections: orderBy(state.Templating.sections, 'order', 'asc')
@@ -14,7 +14,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 @connect(mapStateToProps)
-export class Preview extends Component {
+class Preview extends Component {
     render() {
         const { sections, container } = this.props
 

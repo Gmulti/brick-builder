@@ -1,36 +1,32 @@
-import React, { Component, Fragment } from "react"
-import PropTypes from "prop-types"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import HandleChangeValue from "../../../Handle/HandleChangeValue";
-import SelectValue from "../../BaseStyles/SelectValue";
-
-
+import HandleChangeValue from '../../../Handle/HandleChangeValue'
+import SelectValue from '../../BaseStyles/SelectValue'
 
 class BorderStyle extends Component {
+    title = 'Border Style'
 
-    title = "Border Style"
+    defaultValue = 'solid'
 
-    defaultValue = "solid"
-
-    styleKey = "border-style"
+    styleKey = 'border-style'
 
     options = [
         {
-            value: "dashed",
-            text: "Dashed"
+            value: 'dashed',
+            text: 'Dashed'
         },
         {
-            value: "dotted",
-            text: "Dotted"
+            value: 'dotted',
+            text: 'Dotted'
         },
         {
-            value: "solid",
-            text: "Solid"
+            value: 'solid',
+            text: 'Solid'
         }
     ]
 
     render() {
-
         return (
             <HandleChangeValue
                 title={this.title}

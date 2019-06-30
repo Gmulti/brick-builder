@@ -63,10 +63,10 @@ const Popover = props => {
         customProps.positionX = positionSplit[1]
     }
     return (
-        <React.Fragment>
+        <>
             <SCPopover {...customProps} />
             <SCPopoverOverlay onClick={props.actionHide} />
-        </React.Fragment>
+        </>
     )
 }
 

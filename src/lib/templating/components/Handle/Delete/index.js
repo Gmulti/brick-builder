@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
     null,
     mapDispatchToProps
 )
-export class HandleDelete extends Component {
+class HandleDelete extends Component {
     _handleClick = e => {
         const { actions, component } = this.props
 

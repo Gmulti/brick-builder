@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import * as _ from 'lodash'
+import { debounce } from 'lodash'
 
 export const SCInput = styled.input`
     border: 1px solid ${props => props.theme.inputBorder};
@@ -26,7 +26,7 @@ export const SCInput = styled.input`
 class Input extends React.Component {
     constructor(props) {
         super(props)
-        this._handleChangeThrottle = _.debounce(
+        this._handleChangeThrottle = debounce(
             value => {
                 props.handleChange(value)
             },

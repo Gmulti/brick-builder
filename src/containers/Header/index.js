@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+
 import { connect } from 'react-redux'
-import * as _ from 'lodash'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import faPlusCircle from '@fortawesome/fontawesome-free-solid/faPlusCircle'
+import { each, find, isUndefined, assignIn, filter } from 'lodash'
 
 import MjContainer from '../../models/MjModels/MjContainer'
 import transformStructureToMjml from '../../helpers/transformStructureToMjml'
@@ -11,18 +9,18 @@ import constructStructureTemplating from '../../helpers/constructStructureTempla
 import Fonts from '../../lib/templating/constants/fonts'
 import Toolbar from '../../ui/Toolbar'
 
-const GoogleFonts = _.filter(Fonts, { google_font: true })
+const GoogleFonts = filter(Fonts, { google_font: true })
 
 const headLinkFont = components => {
     let _links = []
 
-    _.each(components, component => {
+    each(components, component => {
         if (component.attributes && component.attributes['font-family']) {
-            const googleFont = _.find(GoogleFonts, {
+            const googleFont = find(GoogleFonts, {
                 value: component.attributes['font-family']
             })
 
-            if (!_.isUndefined(googleFont)) {
+            if (!isUndefined(googleFont)) {
                 _links.push(googleFont)
             }
         }
@@ -40,14 +38,14 @@ const headLinkFont = components => {
 const mapStateToProps = ({ Templating }) => ({ config: Templating })
 
 @connect(mapStateToProps)
-export class Header extends Component {
+class Header extends Component {
     openPreview = () => {
         const { config } = this.props
 
         const _tpl = transformStructureToMjml(
             constructStructureTemplating(config),
             {
-                container: _.assignIn(new MjContainer(), config.container)
+                container: assignIn(new MjContainer(), config.container)
             }
         )
 

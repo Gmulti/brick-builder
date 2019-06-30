@@ -1,4 +1,3 @@
-import * as _ from 'lodash'
 // import DEFAULT_ATTRIBUTES from "./DefaultAttributes"
 import SETTINGS from './Settings'
 import BaseMj from '../Base'
