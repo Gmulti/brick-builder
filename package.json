@@ -16,7 +16,7 @@
         "font-awesome": "^4.7.0",
         "fuse.js": "^3.4.5",
         "jquery": "^3.4.1",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.19",
         "mjml": "^3.3.5",
         "morphism": "^1.12.0",
         "normalize.css": "^7.0.0",
