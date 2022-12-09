@@ -45,7 +45,7 @@
         "resolve": "1.10.0",
         "rxjs": "^5.5.12",
         "styled-components": "^3.4.10",
-        "tinymce": "^4.9.4",
+        "tinymce": "^5.10.7",
         "traits-decorator": "^1.0.1"
     },
     "scripts": {
